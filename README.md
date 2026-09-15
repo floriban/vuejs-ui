@@ -47,19 +47,20 @@ Las variables locales como `--button-color` seleccionan los colores de cada vari
 
 ## Documentar un componente
 
-La ruta `/buttons` es el modelo inicial:
+Las rutas `/buttons` y `/alerts` incluyen documentación de uso:
 - Ejemplos visuales y código desplegable que se puede copiar.
-- Demostración interactiva de carga, deshabilitado y clics.
+- Botones: demostración interactiva de carga, deshabilitado y clics.
+- Alertas: estados, variantes, título opcional, cierre y restauración.
 - Tabla de propiedades con tipos y valores predeterminados.
 - Eventos nativos, atributos heredados, slots y notas de accesibilidad.
 
 Usa `DocsCodeBlock` para el código; el contenido se muestra como texto, sin ejecutar HTML.
-Los fragmentos cortos presuponen que AppButton está importado; los ejemplos completos incluyen el import.
+Los fragmentos cortos presuponen que el componente correspondiente está importado; los ejemplos completos incluyen el import.
 
 ## Estado de esta etapa
 
 - CSS organizado y colores centralizados.
-- AppButton documentado como modelo para el resto.
+- AppButton y AppAlert documentados con ejemplos copiables, API y pruebas interactivas.
 - Git iniciado con una versión anterior a la reorganización.
 - Las otras páginas siguen siendo demostraciones visuales.
 - Los controles de acciones del header son visuales, sin operaciones conectadas.
