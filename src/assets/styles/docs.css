@@ -375,3 +375,23 @@ h1 {
   font-size: 0.8rem;
   line-height: 1.6;
 }
+
+.app-card__body .docs-table-intro {
+  margin: 0 0 20px;
+}
+.docs-table-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  margin-bottom: 22px;
+}
+.docs-table-feedback {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.app-table .docs-table-empty {
+  padding: 32px 18px;
+  color: var(--color-muted);
+  text-align: center;
+  white-space: normal;
+}
