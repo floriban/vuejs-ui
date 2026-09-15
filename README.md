@@ -1,42 +1,70 @@
-# vue-scaffold
+# App UI
 
-This template should help get you started developing with Vue 3 in Vite.
+Catálogo de componentes reutilizables con Vue 3, TypeScript, Vite y Tailwind CSS 4.
+Las rutas actuales son `/buttons`, `/forms`, `/alerts`, `/cards` y `/tables`.
 
-## Recommended IDE Setup
+## Desarrollo
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+Node: `^22.18.0 || >=24.12.0`. El gestor declarado es `pnpm@12.3.4`;
+las versiones de dependencias se guardan en `pnpm-lock.yaml`.
 
 ```sh
-npm install
+pnpm install --frozen-lockfile
+pnpm dev
+pnpm build
 ```
 
-### Compile and Hot-Reload for Development
+Si las dependencias ya están instaladas y el lanzador local de pnpm falla,
+puedes ejecutar `npm run dev` y `npm run build`. No hace falta reinstalar.
+`build` comprueba TypeScript y genera `dist/`. `pnpm preview` sirve esa compilación.
 
-```sh
-npm run dev
-```
+## Estructura
 
-### Type-Check, Compile and Minify for Production
+- `src/components/ui/`: componentes reutilizables.
+- `src/components/docs/`: header, bloques de código y documentación del catálogo.
+- `src/docs/`: ejemplos de uso.
+- `src/views/`: páginas de demostración.
+- `src/layouts/`: estructura general y navegación lateral.
+- `src/assets/main.css`: punto de entrada e importaciones de estilos.
+- `src/assets/styles/theme.css`: colores, fuentes, radios y sombras.
+- `src/assets/styles/base.css`: estilos globales del documento.
+- `src/assets/styles/layout.css`: menú, header y distribución responsive.
+- `src/assets/styles/components/`: CSS de botones, formularios, alertas, tarjetas y tablas.
+- `src/assets/styles/docs.css`: presentación de ejemplos y documentación.
+- `src/assets/styles/accessibility.css`: utilidades accesibles y reducción de movimiento.
 
-```sh
-npm run build
-```
+## Convenciones de estilos
+
+1. Define colores y valores compartidos en `theme.css`. Reutiliza variables con `var(--color-primary)`.
+2. Conserva CSS propio para variantes, estados y selectores de componentes.
+3. Usa utilidades de Tailwind para composiciones sencillas. `@apply` es opcional.
+4. Mantén las reglas responsive junto a los estilos que modifican.
+5. No mezcles estilos exclusivos de ejemplos con los de los componentes UI.
+6. `accessibility.css` se importa al final para que la reducción de movimiento prevalezca.
+
+Los aliases del tema conservan nombres semánticos y apuntan a un valor compartido.
+Las variables locales como `--button-color` seleccionan los colores de cada variante.
+
+## Documentar un componente
+
+La ruta `/buttons` es el modelo inicial:
+- Ejemplos visuales y código desplegable que se puede copiar.
+- Demostración interactiva de carga, deshabilitado y clics.
+- Tabla de propiedades con tipos y valores predeterminados.
+- Eventos nativos, atributos heredados, slots y notas de accesibilidad.
+
+Usa `DocsCodeBlock` para el código; el contenido se muestra como texto, sin ejecutar HTML.
+Los fragmentos cortos presuponen que AppButton está importado; los ejemplos completos incluyen el import.
+
+## Estado de esta etapa
+
+- CSS organizado y colores centralizados.
+- AppButton documentado como modelo para el resto.
+- Git iniciado con una versión anterior a la reorganización.
+- Las otras páginas siguen siendo demostraciones visuales.
+- Los controles de acciones del header son visuales, sin operaciones conectadas.
+
+Próximas etapas: completar documentación y accesibilidad del resto, añadir Modal,
+Dropdown, Tabs y Toast, y construir una pantalla funcional que los combine.
+
+No hay backend ni autenticación. Los datos actuales son ejemplos.

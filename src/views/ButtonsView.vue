@@ -1,4 +1,14 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import AppCheckbox from '../components/ui/AppCheckbox.vue'
+import DocsCodeBlock from '../components/docs/DocsCodeBlock.vue'
+import DocsButtonReference from '../components/docs/DocsButtonReference.vue'
+import { buttonExamples } from '../docs/buttonExamples'
+
+const loading = ref(false)
+const disabled = ref(false)
+const clicks = ref(0)
+
 import { ArrowRight, Download, Plus, Save, Search, Trash2 } from '@lucide/vue'
 import DocsPageHeader from '../components/docs/DocsPageHeader.vue'
 import AppButton from '../components/ui/AppButton.vue'
@@ -33,6 +43,7 @@ const colors = [
         <AppButton variant="ghost">Ghost</AppButton>
       </div>
     </div>
+    <DocsCodeBlock :code="buttonExamples.variants" />
   </section>
 
   <section class="component-section">
@@ -53,6 +64,7 @@ const colors = [
         </div>
       </div>
     </div>
+    <DocsCodeBlock :code="buttonExamples.colors" />
   </section>
 
   <section class="component-section">
@@ -74,6 +86,7 @@ const colors = [
         <AppButton color="danger" variant="outline">Eliminar registro</AppButton>
       </div>
     </div>
+    <DocsCodeBlock :code="buttonExamples.states" />
   </section>
 
   <section class="component-section">
@@ -86,33 +99,34 @@ const colors = [
     <div class="showcase-panel">
       <div class="component-row">
         <AppButton>
-          <Save :size="17" /> Guardar
+          <Save :size="17" aria-hidden="true" /> Guardar
         </AppButton>
         <AppButton color="success">
-          <Download :size="17" /> Descargar
+          <Download :size="17" aria-hidden="true" /> Descargar
         </AppButton>
         <AppButton variant="outline">
-          <Plus :size="17" /> Nuevo registro
+          <Plus :size="17" aria-hidden="true" /> Nuevo registro
         </AppButton>
         <AppButton color="danger" variant="soft">
-          <Trash2 :size="17" /> Eliminar
+          <Trash2 :size="17" aria-hidden="true" /> Eliminar
         </AppButton>
         <AppButton variant="ghost"> Continuar
-          <ArrowRight :size="17" />
+          <ArrowRight :size="17" aria-hidden="true" />
         </AppButton>
       </div>
       <div class="component-row">
         <AppButton icon-only aria-label="Buscar">
-          <Search :size="18" />
+          <Search :size="18" aria-hidden="true" />
         </AppButton>
         <AppButton icon-only aria-label="Añadir" variant="outline">
-          <Plus :size="18" />
+          <Plus :size="18" aria-hidden="true" />
         </AppButton>
         <AppButton icon-only aria-label="Eliminar" color="danger" variant="soft">
-          <Trash2 :size="18" />
+          <Trash2 :size="18" aria-hidden="true" />
         </AppButton>
       </div>
     </div>
+    <DocsCodeBlock :code="buttonExamples.icons" />
   </section>
 
   <section class="component-section">
@@ -124,10 +138,11 @@ const colors = [
     </div>
     <div class="showcase-panel narrow-showcase">
       <AppButton block>
-        <Save :size="17" /> Guardar cambios
+        <Save :size="17" aria-hidden="true" /> Guardar cambios
       </AppButton>
       <AppButton block variant="outline">Cancelar</AppButton>
     </div>
+    <DocsCodeBlock :code="buttonExamples.block" />
   </section>
 
   <section class="component-section">
@@ -145,12 +160,34 @@ const colors = [
       </AppButtonGroup>
       <AppButtonGroup label="Acciones de búsqueda">
         <AppButton variant="outline">
-          <Search :size="17" /> Buscar
+          <Search :size="17" aria-hidden="true" /> Buscar
         </AppButton>
         <AppButton>
-          <Plus :size="17" /> Crear
+          <Plus :size="17" aria-hidden="true" /> Crear
         </AppButton>
       </AppButtonGroup>
     </div>
+    <DocsCodeBlock :code="buttonExamples.groups" />
   </section>
+
+  <section class="component-section">
+    <div class="section-heading">
+      <div><span>07</span><h2>Prueba interactiva</h2></div>
+      <p>Comprueba cómo la carga y el bloqueo afectan a los clics.</p>
+    </div>
+    <div class="showcase-panel">
+      <div class="component-row">
+        <AppCheckbox v-model="loading" label="Estado de carga" />
+        <AppCheckbox v-model="disabled" label="Deshabilitado" />
+      </div>
+      <div class="component-row">
+        <AppButton :loading="loading" :disabled="disabled" @click="clicks++">
+          {{ loading ? 'Guardando' : 'Probar clic' }}
+        </AppButton>
+        <p role="status">Clics registrados: {{ clicks }}</p>
+      </div>
+    </div>
+    <DocsCodeBlock :code="buttonExamples.interactive" />
+  </section>
+  <DocsButtonReference />
 </template>
