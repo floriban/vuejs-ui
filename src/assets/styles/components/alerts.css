@@ -1,0 +1,95 @@
+.app-alert {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 15px 16px;
+  border: 1px solid;
+  border-radius: 10px;
+  font-size: 0.84rem;
+}
+
+.app-alert--info {
+  --alert-color: var(--color-info);
+  --alert-border: var(--color-info-light);
+  --alert-bg: var(--color-info-light);
+  --alert-solid: var(--color-info);
+}
+
+.app-alert--success {
+  --alert-color: var(--color-success);
+  --alert-border: var(--color-success-light);
+  --alert-bg: var(--color-success-light);
+  --alert-solid: var(--color-success);
+}
+
+.app-alert--warning {
+  --alert-color: var(--color-warning);
+  --alert-border: var(--color-warning-light);
+  --alert-bg: var(--color-warning-light);
+  --alert-solid: var(--color-warning);
+}
+
+.app-alert--danger,
+.app-alert--error {
+  --alert-color: var(--color-danger);
+  --alert-border: var(--color-danger-light);
+  --alert-bg: var(--color-danger-light);
+  --alert-solid: var(--color-danger);
+}
+
+.app-alert--soft {
+  color: var(--alert-color);
+  border-color: transparent;
+  background: var(--alert-bg);
+}
+
+.app-alert--outline {
+  color: var(--alert-color);
+  border-color: var(--alert-border);
+  background: var(--color-white);
+}
+
+.app-alert--solid {
+  color: var(--color-white);
+  border-color: var(--alert-solid);
+  background: var(--alert-solid);
+}
+
+.app-alert__indicator {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+}
+
+.app-alert__indicator svg {
+  display: block;
+}
+
+.app-alert__content {
+  flex: 1;
+}
+
+.app-alert__content strong {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.app-alert__description {
+  line-height: 1.5;
+  opacity: 0.86;
+}
+
+.app-alert__close {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  color: currentColor;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.65;
+}

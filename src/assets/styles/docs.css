@@ -1,0 +1,263 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: flex-start;
+  padding: 25px 30px;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  box-shadow: var(--shadow-card);
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--color-primary);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  color: var(--color-dark);
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.page-header p:last-child {
+  max-width: 620px;
+  margin: 16px 0 0;
+  color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.framework-pill {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--color-success-light);
+  color: var(--color-success);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.framework-pill i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-success);
+  box-shadow: none;
+}
+
+.component-section {
+  padding-top: 58px;
+  scroll-margin-top: 20px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  align-items: end;
+  margin-bottom: 20px;
+}
+
+.section-heading > div {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.section-heading span {
+  color: var(--color-primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: var(--color-dark);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.section-heading p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.86rem;
+}
+
+.showcase-panel,
+.alert-grid {
+  padding: 30px;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  box-shadow: var(--shadow-card);
+}
+
+.component-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.component-row + .component-row {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-showcase-border);
+}
+
+.color-groups {
+  display: grid;
+  gap: 22px;
+}
+
+.color-group + .color-group {
+  padding-top: 22px;
+  border-top: 1px solid var(--color-showcase-border);
+}
+
+.color-group > span {
+  display: block;
+  margin-bottom: 11px;
+  color: var(--color-showcase-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.form-showcase {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.input-sizes {
+  display: grid;
+  gap: 18px;
+  max-width: 620px;
+}
+
+.narrow-showcase {
+  display: grid;
+  gap: 12px;
+  max-width: 620px;
+}
+
+.choice-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  grid-column: 1 / -1;
+  padding-top: 2px;
+}
+
+.alert-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.card-kicker {
+  color: var(--color-gray-500);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  color: var(--color-success);
+  background: var(--color-success-light);
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.metric {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.metric strong {
+  color: var(--color-dark);
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.metric span {
+  max-width: 170px;
+  line-height: 1.4;
+}
+
+.table-showcase {
+  padding: 0;
+  overflow: hidden;
+}
+
+.table-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.table-status--success {
+  color: var(--color-success);
+  background: var(--color-success-light);
+}
+
+.table-status--warning {
+  color: var(--color-warning);
+  background: var(--color-warning-light);
+}
+
+.table-status--neutral {
+  color: var(--color-muted);
+  background: var(--color-light);
+}
+
+.table-actions {
+  width: 1%;
+  text-align: right;
+}
+
+@media (max-width: 800px) {
+  .page-header,
+    .section-heading {
+      display: block;
+    }
+  .framework-pill {
+      width: max-content;
+      margin-top: 20px;
+    }
+  .section-heading p {
+      margin-top: 8px;
+    }
+  .form-showcase,
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+}
