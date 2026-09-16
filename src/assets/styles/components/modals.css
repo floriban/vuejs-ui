@@ -1,0 +1,225 @@
+.app-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+  background: var(--color-modal-backdrop);
+}
+
+.app-modal__backdrop--top {
+  align-items: flex-start;
+}
+
+.app-modal {
+  display: flex;
+  width: min(100%, 520px);
+  max-height: calc(100dvh - 48px);
+  margin: auto 0;
+  overflow: hidden;
+  flex-direction: column;
+  background: var(--color-surface);
+  border-radius: 10px;
+  box-shadow: var(--shadow-modal);
+  color: var(--color-text);
+}
+
+.app-modal__backdrop--top .app-modal {
+  margin-top: 56px;
+  margin-bottom: 24px;
+}
+
+.app-modal--sm {
+  width: min(100%, 380px);
+}
+
+.app-modal--md {
+  width: min(100%, 520px);
+}
+
+.app-modal--lg {
+  width: min(100%, 760px);
+}
+
+.app-modal--xl {
+  width: min(100%, 1040px);
+}
+
+.app-modal--scrollable {
+  height: min(620px, calc(100dvh - 48px));
+}
+
+.app-modal__header {
+  display: flex;
+  min-height: 72px;
+  flex: none;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.app-modal__icon {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  place-items: center;
+  border-radius: 9px;
+  background: var(--color-light);
+  color: var(--color-gray-700);
+}
+
+.app-modal__icon--primary {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.app-modal__icon--success {
+  background: var(--color-success-light);
+  color: var(--color-success);
+}
+
+.app-modal__icon--info {
+  background: var(--color-info-light);
+  color: var(--color-info);
+}
+
+.app-modal__icon--warning {
+  background: var(--color-warning-light);
+  color: var(--color-warning);
+}
+
+.app-modal__icon--danger {
+  background: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+.app-modal__heading {
+  min-width: 0;
+  flex: 1;
+}
+
+.app-modal__title {
+  margin: 0;
+  color: var(--color-dark);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.app-modal__description {
+  margin: 3px 0 0;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.app-modal__close {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: none;
+  cursor: pointer;
+  place-items: center;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--color-gray-500);
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.app-modal__close:hover {
+  background: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+.app-modal__body {
+  min-height: 0;
+  padding: 24px 22px;
+  overflow-y: auto;
+  color: var(--color-gray-700);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.app-modal__body > :first-child {
+  margin-top: 0;
+}
+
+.app-modal__body > :last-child {
+  margin-bottom: 0;
+}
+
+.app-modal__footer {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 15px 22px;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.app-modal-enter-active,
+.app-modal-leave-active {
+  transition: opacity 180ms ease;
+}
+
+.app-modal-enter-active .app-modal,
+.app-modal-leave-active .app-modal {
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.app-modal-enter-from,
+.app-modal-leave-to {
+  opacity: 0;
+}
+
+.app-modal-enter-from .app-modal,
+.app-modal-leave-to .app-modal {
+  opacity: 0;
+  transform: translateY(-18px);
+}
+
+@media (max-width: 640px) {
+  .app-modal__backdrop {
+    padding: 12px;
+  }
+
+  .app-modal {
+    max-height: calc(100dvh - 24px);
+  }
+
+  .app-modal__backdrop--top .app-modal {
+    margin-top: 20px;
+  }
+
+  .app-modal__header,
+  .app-modal__body,
+  .app-modal__footer {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .app-modal__footer > * {
+    flex: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-modal-enter-active,
+  .app-modal-leave-active,
+  .app-modal-enter-active .app-modal,
+  .app-modal-leave-active .app-modal {
+    transition-duration: 1ms;
+  }
+}

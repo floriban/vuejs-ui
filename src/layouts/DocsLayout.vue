@@ -2,17 +2,18 @@
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import DocsHeader from '../components/docs/DocsHeader.vue'
-import { BellRing, ChevronsLeft, CreditCard, FormInput, MousePointerClick, TableProperties } from '@lucide/vue'
+import { BellRing, ChevronsLeft, CreditCard, FormInput, MousePointerClick, PanelsTopLeft, TableProperties } from '@lucide/vue'
 
 const route = useRoute()
 const collapsed = ref(true)
 const currentTitle = computed(() => sections.find((section) => section.name === route.name)?.label ?? 'Componentes')
 const sections = [
   { name: 'buttons', label: 'Botones', icon: MousePointerClick },
-  { name: 'forms', label: 'Formularios', icon: FormInput },
   { name: 'alerts', label: 'Alertas', icon: BellRing },
-  { name: 'cards', label: 'Tarjetas', icon: CreditCard },
   { name: 'tables', label: 'Tablas', icon: TableProperties },
+  { name: 'cards', label: 'Tarjetas', icon: CreditCard },
+  { name: 'forms', label: 'Formularios', icon: FormInput },
+  { name: 'modals', label: 'Modales', icon: PanelsTopLeft },
 ]
 </script>
 

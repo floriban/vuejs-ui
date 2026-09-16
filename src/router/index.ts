@@ -34,6 +34,11 @@ const router = createRouter({
           name: 'tables',
           component: () => import('../views/TablesView.vue'),
         },
+        {
+          path: 'modals',
+          name: 'modals',
+          component: () => import('../views/ModalsView.vue'),
+        },
       ],
     },
   ],

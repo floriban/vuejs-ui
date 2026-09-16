@@ -1,0 +1,8 @@
+export const modalExamples = {
+  basic: '<AppButton @click="open = true">Abrir modal</AppButton>\n\n<AppModal v-model="open" title="Actualizar perfil" description="Revisa la información antes de guardarla.">\n  <p>El contenido principal se coloca en el slot por defecto.</p>\n  <template #footer>\n    <AppButton variant="ghost" color="neutral" @click="open = false">Cancelar</AppButton>\n    <AppButton @click="open = false">Guardar cambios</AppButton>\n  </template>\n</AppModal>',
+  sizes: '<AppModal v-model="open" size="sm" title="Modal pequeño">...</AppModal>\n<AppModal v-model="open" size="md" title="Modal mediano">...</AppModal>\n<AppModal v-model="open" size="lg" title="Modal grande">...</AppModal>\n<AppModal v-model="open" size="xl" title="Modal extra grande">...</AppModal>',
+  behavior: '<AppModal v-model="topOpen" :centered="false" title="Alineado arriba">...</AppModal>\n\n<AppModal v-model="persistentOpen" :close-on-backdrop="false" :close-on-escape="false" title="Acción pendiente">...</AppModal>',
+  scrollable: '<AppModal v-model="open" scrollable title="Historial del proyecto">\n  <article><!-- Contenido extenso --></article>\n  <template #footer><AppButton @click="open = false">Listo</AppButton></template>\n</AppModal>',
+  confirmation: '<AppModal v-model="open" size="sm" title="Eliminar proyecto" description="Esta acción no se puede deshacer." :icon="TriangleAlert" tone="danger">\n  <p>Se eliminarán los datos asociados al proyecto.</p>\n  <template #footer>\n    <AppButton variant="ghost" color="neutral" @click="open = false">Cancelar</AppButton>\n    <AppButton color="danger" @click="confirmDelete">Eliminar</AppButton>\n  </template>\n</AppModal>',
+} as const
+

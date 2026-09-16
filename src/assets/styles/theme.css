@@ -51,6 +51,8 @@
   --color-table-text: #475467;
   --color-focus-ring: rgba(54, 153, 255, 0.35);
   --color-focus-ring-alt: rgba(91, 91, 214, 0.2);
+  --color-modal-backdrop: rgba(24, 28, 50, 0.58);
   --shadow-switch: 0 1px 3px rgba(0, 0, 0, 0.24);
   --shadow-sidebar: 12px 0 30px rgba(24, 28, 50, 0.15);
+  --shadow-modal: 0 24px 70px rgba(24, 28, 50, 0.22);
 }
