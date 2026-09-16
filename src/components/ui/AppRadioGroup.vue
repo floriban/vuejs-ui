@@ -15,6 +15,8 @@ const props = withDefaults(
     options: RadioOption[]
     orientation?: 'horizontal' | 'vertical'
     disabled?: boolean
+    describedBy?: string
+    invalid?: boolean
   }>(),
   { orientation: 'vertical', disabled: false },
 )
@@ -24,7 +26,12 @@ const generatedName = useId()
 </script>
 
 <template>
-  <fieldset class="app-radio-fieldset" :disabled="disabled">
+  <fieldset
+    class="app-radio-fieldset"
+    :disabled="disabled"
+    :aria-describedby="describedBy"
+    :aria-invalid="invalid || undefined"
+  >
     <legend v-if="legend" class="app-field__label">{{ legend }}</legend>
     <div class="app-radio-group" :class="`app-radio-group--${orientation}`">
       <label

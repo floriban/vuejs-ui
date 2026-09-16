@@ -410,3 +410,19 @@ h1 {
     grid-template-columns: 1fr;
   }
 }
+
+.docs-form-demo {
+  display: grid;
+  gap: 22px;
+}
+.docs-form-demo .app-alert {
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .docs-form-demo .component-row {
+    align-items: stretch;
+  }
+  .docs-form-demo .component-row .app-button {
+    flex: 1 1 140px;
+  }
+}
