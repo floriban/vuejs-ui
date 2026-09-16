@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import DocsHeader from '../components/docs/DocsHeader.vue'
-import { BellRing, ChevronsLeft, CreditCard, FormInput, MousePointerClick, PanelsTopLeft, TableProperties } from '@lucide/vue'
+import { Bell, BellRing, ChevronsLeft, CreditCard, FormInput, MousePointerClick, PanelsTopLeft, TableProperties } from '@lucide/vue'
 
 const route = useRoute()
 const collapsed = ref(true)
@@ -14,6 +14,7 @@ const sections = [
   { name: 'cards', label: 'Tarjetas', icon: CreditCard },
   { name: 'forms', label: 'Formularios', icon: FormInput },
   { name: 'modals', label: 'Modales', icon: PanelsTopLeft },
+  { name: 'toasts', label: 'Notificaciones', icon: Bell },
 ]
 </script>
 

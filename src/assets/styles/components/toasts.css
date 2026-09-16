@@ -1,0 +1,224 @@
+.app-toast-viewport {
+  position: fixed;
+  z-index: 1200;
+  display: grid;
+  width: min(380px, calc(100vw - 32px));
+  gap: 12px;
+  pointer-events: none;
+}
+
+.app-toast-viewport--top-left {
+  top: 20px;
+  left: 20px;
+}
+
+.app-toast-viewport--top-center {
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.app-toast-viewport--top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.app-toast-viewport--bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+.app-toast-viewport--bottom-center {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.app-toast-viewport--bottom-right {
+  right: 20px;
+  bottom: 20px;
+}
+
+.app-toast {
+  --toast-color: var(--color-info);
+  --toast-soft: var(--color-info-light);
+
+  position: relative;
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: start;
+  min-height: 82px;
+  padding: 16px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--toast-color);
+  border-radius: 10px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-toast);
+  color: var(--color-gray-700);
+  pointer-events: auto;
+}
+
+.app-toast--success {
+  --toast-color: var(--color-success);
+  --toast-soft: var(--color-success-light);
+}
+
+.app-toast--warning {
+  --toast-color: var(--color-warning);
+  --toast-soft: var(--color-warning-light);
+}
+
+.app-toast--danger {
+  --toast-color: var(--color-danger);
+  --toast-soft: var(--color-danger-light);
+}
+
+.app-toast__indicator {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 9px;
+  background: var(--toast-soft);
+  color: var(--toast-color);
+}
+
+.app-toast__content {
+  min-width: 0;
+  padding-top: 1px;
+}
+
+.app-toast__content strong {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--color-dark);
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.app-toast__content p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.79rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.app-toast__action {
+  margin-top: 8px;
+  padding: 0;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  color: var(--toast-color);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.app-toast__action:hover {
+  text-decoration: underline;
+}
+
+.app-toast__close {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  margin: -3px -4px 0 0;
+  padding: 0;
+  cursor: pointer;
+  place-items: center;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-gray-500);
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+.app-toast__close:hover {
+  background: var(--toast-soft);
+  color: var(--toast-color);
+}
+
+.app-toast__progress {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: var(--toast-color);
+  transform-origin: left;
+  animation: app-toast-progress var(--toast-duration) linear forwards;
+}
+
+.app-toast:hover .app-toast__progress,
+.app-toast:focus-within .app-toast__progress {
+  animation-play-state: paused;
+}
+
+.app-toast-list-enter-active,
+.app-toast-list-leave-active,
+.app-toast-list-move {
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+
+.app-toast-list-enter-from,
+.app-toast-list-leave-to {
+  opacity: 0;
+  transform: translateX(24px);
+}
+
+.app-toast-list-leave-active {
+  position: absolute;
+  width: 100%;
+}
+
+@keyframes app-toast-progress {
+  from {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .app-toast-viewport {
+    right: 12px;
+    left: 12px;
+    width: auto;
+    transform: none;
+  }
+
+  .app-toast-viewport--top-left,
+  .app-toast-viewport--top-center,
+  .app-toast-viewport--top-right {
+    top: 12px;
+  }
+
+  .app-toast-viewport--bottom-left,
+  .app-toast-viewport--bottom-center,
+  .app-toast-viewport--bottom-right {
+    bottom: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-toast-list-enter-active,
+  .app-toast-list-leave-active,
+  .app-toast-list-move {
+    transition-duration: 1ms;
+  }
+
+  .app-toast__progress {
+    animation: none;
+  }
+}

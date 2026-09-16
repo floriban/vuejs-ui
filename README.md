@@ -1,7 +1,7 @@
 # App UI
 
 Catálogo de componentes reutilizables con Vue 3, TypeScript, Vite y Tailwind CSS 4.
-Las rutas actuales son `/buttons`, `/forms`, `/alerts`, `/cards`, `/tables` y `/modals`.
+Las rutas actuales son `/buttons`, `/forms`, `/alerts`, `/cards`, `/tables`, `/modals` y `/toasts`.
 
 ## Desarrollo
 
@@ -29,7 +29,7 @@ puedes ejecutar `npm run dev` y `npm run build`. No hace falta reinstalar.
 - `src/assets/styles/theme.css`: colores, fuentes, radios y sombras.
 - `src/assets/styles/base.css`: estilos globales del documento.
 - `src/assets/styles/layout.css`: menú, header y distribución responsive.
-- `src/assets/styles/components/`: CSS de botones, formularios, alertas, tarjetas, tablas y modales.
+- `src/assets/styles/components/`: CSS de botones, formularios, alertas, tarjetas, tablas, modales y notificaciones.
 - `src/assets/styles/docs.css`: presentación de ejemplos y documentación.
 - `src/assets/styles/accessibility.css`: utilidades accesibles y reducción de movimiento.
 
@@ -47,7 +47,7 @@ Las variables locales como `--button-color` seleccionan los colores de cada vari
 
 ## Documentar un componente
 
-Las seis rutas `/buttons`, `/forms`, `/alerts`, `/cards`, `/tables` y `/modals` incluyen documentación de uso:
+Las siete rutas `/buttons`, `/forms`, `/alerts`, `/cards`, `/tables`, `/modals` y `/toasts` incluyen documentación de uso:
 - Ejemplos visuales y código desplegable que se puede copiar.
 - Botones: demostración interactiva de carga, deshabilitado y clics.
 - Formularios: campos, selección, validación, mensajes asociados y envío.
@@ -55,6 +55,7 @@ Las seis rutas `/buttons`, `/forms`, `/alerts`, `/cards`, `/tables` y `/modals` 
 - Tarjetas: iconos de Lucide, título, subtítulo, toolbar y encabezados personalizados.
 - Tablas: composición dentro de AppCard, filas compactas/alternadas, hover y estado vacío.
 - Modales: tamaños, posición, fondo estático, scroll, confirmación y control accesible del foco.
+- Notificaciones: estados, acciones, duración, seis posiciones y administración de la pila.
 - Tabla de propiedades con tipos y valores predeterminados.
 - Eventos nativos, atributos heredados, slots y notas de accesibilidad.
 
@@ -64,11 +65,11 @@ Los fragmentos cortos presuponen que el componente correspondiente está importa
 ## Estado de esta etapa
 
 - CSS organizado y colores centralizados.
-- AppButton, AppAlert, AppCard, AppTable, AppModal y los controles de formulario están documentados con ejemplos copiables, API y pruebas interactivas.
+- AppButton, AppAlert, AppCard, AppTable, AppModal, Toast y los controles de formulario están documentados con ejemplos copiables, API y pruebas interactivas.
 - Git iniciado con una versión anterior a la reorganización.
-- Las seis páginas del catálogo incluyen documentación y demostraciones interactivas.
+- Las siete páginas del catálogo incluyen documentación y demostraciones interactivas.
 - Los controles de acciones del header son visuales, sin operaciones conectadas.
 
-Próximas etapas: añadir Dropdown, Tabs y Toast, y construir una pantalla funcional que los combine.
+Próximas etapas: añadir Dropdown y Tabs, y construir una pantalla funcional que combine los componentes.
 
 No hay backend ni autenticación. Los datos actuales son ejemplos.

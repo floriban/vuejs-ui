@@ -39,6 +39,11 @@ const router = createRouter({
           name: 'modals',
           component: () => import('../views/ModalsView.vue'),
         },
+        {
+          path: 'toasts',
+          name: 'toasts',
+          component: () => import('../views/ToastsView.vue'),
+        },
       ],
     },
   ],

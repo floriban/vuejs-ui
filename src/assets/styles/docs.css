@@ -457,3 +457,14 @@ h1 {
   color: var(--color-success);
   font-weight: 600;
 }
+
+.docs-toast-controls {
+  display: grid;
+  gap: 18px;
+}
+
+.toast-action-result {
+  margin-top: 14px;
+  color: var(--color-success);
+  font-weight: 600;
+}

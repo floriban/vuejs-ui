@@ -8,5 +8,6 @@
 @import "./styles/components/cards.css";
 @import "./styles/components/tables.css";
 @import "./styles/components/modals.css";
+@import "./styles/components/toasts.css";
 @import "./styles/docs.css";
 @import "./styles/accessibility.css";
