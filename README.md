@@ -47,10 +47,11 @@ Las variables locales como `--button-color` seleccionan los colores de cada vari
 
 ## Documentar un componente
 
-Las rutas `/buttons`, `/alerts` y `/tables` incluyen documentación de uso:
+Las rutas `/buttons`, `/alerts`, `/cards` y `/tables` incluyen documentación de uso:
 - Ejemplos visuales y código desplegable que se puede copiar.
 - Botones: demostración interactiva de carga, deshabilitado y clics.
 - Alertas: estados, variantes, título opcional, cierre y restauración.
+- Tarjetas: iconos de Lucide, título, subtítulo, toolbar y encabezados personalizados.
 - Tablas: composición dentro de AppCard, filas compactas/alternadas, hover y estado vacío.
 - Tabla de propiedades con tipos y valores predeterminados.
 - Eventos nativos, atributos heredados, slots y notas de accesibilidad.
@@ -61,7 +62,7 @@ Los fragmentos cortos presuponen que el componente correspondiente está importa
 ## Estado de esta etapa
 
 - CSS organizado y colores centralizados.
-- AppButton, AppAlert y AppTable documentados con ejemplos copiables, API y pruebas interactivas.
+- AppButton, AppAlert, AppCard y AppTable documentados con ejemplos copiables, API y pruebas interactivas.
 - Git iniciado con una versión anterior a la reorganización.
 - Las otras páginas siguen siendo demostraciones visuales.
 - Los controles de acciones del header son visuales, sin operaciones conectadas.

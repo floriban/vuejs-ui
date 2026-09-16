@@ -48,3 +48,55 @@
   font-size: 1rem;
   font-weight: 600;
 }
+
+/* Automatic header: icon, labels and optional toolbar. Custom header slots stay intact. */
+.app-card__heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
+}
+.app-card__labels {
+  min-width: 0;
+}
+.app-card .app-card__title {
+  margin: 0;
+  overflow-wrap: anywhere;
+  line-height: 1.45;
+}
+.app-card__subtitle {
+  margin: 4px 0 0;
+  color: var(--color-gray-500);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.app-card__icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+.app-card__icon--primary { color: var(--color-primary); }
+.app-card__icon--neutral { color: var(--color-muted); }
+.app-card__icon--success { color: var(--color-success); }
+.app-card__icon--info { color: var(--color-info); }
+.app-card__icon--warning { color: var(--color-warning); }
+.app-card__icon--danger { color: var(--color-danger); }
+.app-card__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-left: auto;
+}
+@media (max-width: 600px) {
+  .app-card__header:has(.app-card__heading) {
+    flex-wrap: wrap;
+  }
+  .app-card__heading {
+    flex-basis: 180px;
+  }
+}
