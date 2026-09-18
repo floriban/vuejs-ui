@@ -51,7 +51,7 @@ watch(() => props.src, () => {
 </script>
 
 <template>
-  <span class="app-avatar-wrap">
+  <span class="app-avatar-wrap" :class="'app-avatar-wrap--' + size">
     <span
       class="app-avatar"
       :class="['app-avatar--' + size, 'app-avatar--' + shape, 'app-avatar--' + color]"

@@ -101,14 +101,44 @@
   place-items: center;
 }
 
+.app-avatar-wrap {
+  --avatar-status-size: 11px;
+  --avatar-status-border: 2px;
+}
+
+.app-avatar-wrap--xs {
+  --avatar-status-size: 7px;
+  --avatar-status-border: 1px;
+}
+
+.app-avatar-wrap--sm {
+  --avatar-status-size: 9px;
+  --avatar-status-border: 1px;
+}
+
+.app-avatar-wrap--md {
+  --avatar-status-size: 11px;
+  --avatar-status-border: 2px;
+}
+
+.app-avatar-wrap--lg {
+  --avatar-status-size: 14px;
+  --avatar-status-border: 2px;
+}
+
+.app-avatar-wrap--xl {
+  --avatar-status-size: 18px;
+  --avatar-status-border: 2px;
+}
+
 .app-avatar__status {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 25%;
-  min-width: 8px;
-  aspect-ratio: 1;
-  border: 2px solid var(--color-surface);
+  box-sizing: border-box;
+  width: var(--avatar-status-size);
+  height: var(--avatar-status-size);
+  border: var(--avatar-status-border) solid var(--color-surface);
   border-radius: 50%;
 }
 
