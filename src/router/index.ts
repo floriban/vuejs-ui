@@ -44,6 +44,11 @@ const router = createRouter({
           name: 'toasts',
           component: () => import('../views/ToastsView.vue'),
         },
+        {
+          path: 'dropdowns',
+          name: 'dropdowns',
+          component: () => import('../views/DropdownsView.vue'),
+        },
       ],
     },
   ],

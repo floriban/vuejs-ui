@@ -468,3 +468,30 @@ h1 {
   color: var(--color-success);
   font-weight: 600;
 }
+
+.dropdown-demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.dropdown-action-status,
+.dropdown-selection-summary {
+  color: var(--color-muted);
+  font-size: 0.8rem;
+}
+
+.dropdown-selection-summary {
+  margin: 14px 0 0;
+}
+
+.dropdown-position-demo {
+  justify-content: space-between;
+}
+
+.dropdown-table-action {
+  width: 1%;
+  text-align: right;
+  white-space: nowrap;
+}

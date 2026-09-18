@@ -56,4 +56,5 @@
   --shadow-sidebar: 12px 0 30px rgba(24, 28, 50, 0.15);
   --shadow-modal: 0 24px 70px rgba(24, 28, 50, 0.22);
   --shadow-toast: 0 12px 35px rgba(24, 28, 50, 0.18);
+  --shadow-dropdown: 0 10px 30px rgba(24, 28, 50, 0.16);
 }

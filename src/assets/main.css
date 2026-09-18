@@ -9,5 +9,6 @@
 @import "./styles/components/tables.css";
 @import "./styles/components/modals.css";
 @import "./styles/components/toasts.css";
+@import "./styles/components/dropdowns.css";
 @import "./styles/docs.css";
 @import "./styles/accessibility.css";
