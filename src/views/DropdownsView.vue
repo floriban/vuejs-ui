@@ -5,13 +5,21 @@ import DocsCodeBlock from '../components/docs/DocsCodeBlock.vue'
 import DocsDropdownReference from '../components/docs/DocsDropdownReference.vue'
 import DocsPageHeader from '../components/docs/DocsPageHeader.vue'
 import AppCard from '../components/ui/AppCard.vue'
+import AppCheckbox from '../components/ui/AppCheckbox.vue'
 import AppDropdown from '../components/ui/AppDropdown.vue'
 import AppDropdownItem from '../components/ui/AppDropdownItem.vue'
 import AppDropdownSeparator from '../components/ui/AppDropdownSeparator.vue'
+import AppField from '../components/ui/AppField.vue'
 import AppTable from '../components/ui/AppTable.vue'
 import { dropdownExamples } from '../docs/dropdownExamples'
 
 const lastAction = ref('Ninguna acción ejecutada.')
+const interactiveAlign = ref<'start' | 'end'>('start')
+const interactiveSide = ref<'top' | 'bottom'>('bottom')
+const interactiveVariant = ref<'solid' | 'outline' | 'soft' | 'ghost'>('outline')
+const interactiveCloseOnSelect = ref(true)
+const interactiveDisabled = ref(false)
+const interactiveSelection = ref('Ninguna opción seleccionada.')
 const preferences = reactive({
   email: true,
   push: false,
@@ -177,5 +185,54 @@ function registerAction(action: string) {
     <DocsCodeBlock :code="dropdownExamples.actions" />
   </section>
 
+  <section class="component-section">
+    <div class="section-heading">
+      <div><span>06</span><h2>Prueba interactiva</h2></div>
+      <p>Cambia la alineación, el lado, la variante y el comportamiento de selección.</p>
+    </div>
+
+    <div class="showcase-panel docs-dropdown-controls">
+      <div class="form-showcase">
+        <AppField label="Alineación" for-id="dropdown-demo-align">
+          <select id="dropdown-demo-align" v-model="interactiveAlign" class="app-control app-control--md">
+            <option value="start">start</option><option value="end">end</option>
+          </select>
+        </AppField>
+        <AppField label="Lado preferido" for-id="dropdown-demo-side">
+          <select id="dropdown-demo-side" v-model="interactiveSide" class="app-control app-control--md">
+            <option value="bottom">bottom</option><option value="top">top</option>
+          </select>
+        </AppField>
+        <AppField label="Variante del botón" for-id="dropdown-demo-variant">
+          <select id="dropdown-demo-variant" v-model="interactiveVariant" class="app-control app-control--md">
+            <option value="solid">solid</option><option value="outline">outline</option>
+            <option value="soft">soft</option><option value="ghost">ghost</option>
+          </select>
+        </AppField>
+      </div>
+      <div class="component-row">
+        <AppCheckbox v-model="interactiveCloseOnSelect" label="Cerrar al seleccionar" />
+        <AppCheckbox v-model="interactiveDisabled" label="Deshabilitar disparador" />
+      </div>
+      <div class="dropdown-demo-row">
+        <AppDropdown
+          label="Probar menú"
+          :align="interactiveAlign"
+          :side="interactiveSide"
+          :trigger-variant="interactiveVariant"
+          :close-on-select="interactiveCloseOnSelect"
+          :disabled="interactiveDisabled"
+        >
+          <AppDropdownItem :icon="Eye" @select="interactiveSelection = 'Vista previa seleccionada'">Vista previa</AppDropdownItem>
+          <AppDropdownItem :icon="Copy" @select="interactiveSelection = 'Duplicar seleccionado'">Duplicar</AppDropdownItem>
+          <AppDropdownSeparator />
+          <AppDropdownItem :icon="Trash2" danger @select="interactiveSelection = 'Eliminar seleccionado'">Eliminar</AppDropdownItem>
+        </AppDropdown>
+        <span class="dropdown-action-status" role="status">{{ interactiveSelection }}</span>
+      </div>
+    </div>
+
+    <DocsCodeBlock :code="dropdownExamples.interactive" />
+  </section>
   <DocsDropdownReference />
 </template>

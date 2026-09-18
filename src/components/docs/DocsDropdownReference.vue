@@ -30,7 +30,7 @@ const itemProperties = [
 <template>
   <section class="component-section">
     <div class="section-heading">
-      <div><span>06</span><h2>Referencia de Dropdown</h2></div>
+      <div><span>07</span><h2>Referencia de Dropdown</h2></div>
       <p>Propiedades, slots, eventos y comportamiento accesible.</p>
     </div>
 

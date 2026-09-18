@@ -4,5 +4,5 @@ export const modalExamples = {
   behavior: '<AppModal v-model="topOpen" :centered="false" title="Alineado arriba">...</AppModal>\n\n<AppModal v-model="persistentOpen" :close-on-backdrop="false" :close-on-escape="false" title="Acción pendiente">...</AppModal>',
   scrollable: '<AppModal v-model="open" scrollable title="Historial del proyecto">\n  <article><!-- Contenido extenso --></article>\n  <template #footer><AppButton @click="open = false">Listo</AppButton></template>\n</AppModal>',
   confirmation: '<AppModal v-model="open" size="sm" title="Eliminar proyecto" description="Esta acción no se puede deshacer." :icon="TriangleAlert" tone="danger">\n  <p>Se eliminarán los datos asociados al proyecto.</p>\n  <template #footer>\n    <AppButton variant="ghost" color="neutral" @click="open = false">Cancelar</AppButton>\n    <AppButton color="danger" @click="confirmDelete">Eliminar</AppButton>\n  </template>\n</AppModal>',
+  interactive: '<AppModal v-model="open" :size="size" :tone="tone" :centered="centered" :scrollable="scrollable" :close-on-backdrop="closeOnBackdrop" :close-on-escape="closeOnEscape" :show-close="showClose" title="Vista previa">...</AppModal>',
 } as const
-

@@ -49,6 +49,16 @@ const router = createRouter({
           name: 'dropdowns',
           component: () => import('../views/DropdownsView.vue'),
         },
+        {
+          path: 'tabs',
+          name: 'tabs',
+          component: () => import('../views/TabsView.vue'),
+        },
+        {
+          path: 'accordion',
+          name: 'accordion',
+          component: () => import('../views/AccordionView.vue'),
+        },
       ],
     },
   ],

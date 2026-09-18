@@ -6,6 +6,8 @@ import DocsModalReference from '../components/docs/DocsModalReference.vue'
 import DocsPageHeader from '../components/docs/DocsPageHeader.vue'
 import AppButton from '../components/ui/AppButton.vue'
 import AppCard from '../components/ui/AppCard.vue'
+import AppCheckbox from '../components/ui/AppCheckbox.vue'
+import AppField from '../components/ui/AppField.vue'
 import AppModal from '../components/ui/AppModal.vue'
 import { modalExamples } from '../docs/modalExamples'
 
@@ -19,6 +21,14 @@ const persistentOpen = ref(false)
 const scrollOpen = ref(false)
 const confirmOpen = ref(false)
 const lastAction = ref('')
+const interactiveOpen = ref(false)
+const interactiveSize = ref<ModalSize>('md')
+const interactiveTone = ref<NonNullable<InstanceType<typeof AppModal>['$props']['tone']>>('primary')
+const interactiveCentered = ref(true)
+const interactiveScrollable = ref(false)
+const interactiveBackdrop = ref(true)
+const interactiveEscape = ref(true)
+const interactiveClose = ref(true)
 
 function openSize(size: ModalSize) {
   activeSize.value = size
@@ -196,6 +206,61 @@ function confirmDelete() {
     </AppModal>
   </section>
 
+  <section class="component-section">
+    <div class="section-heading">
+      <div><span>06</span><h2>Prueba interactiva</h2></div>
+      <p>Combina tamaño, color, posición, scroll y opciones de cierre.</p>
+    </div>
+
+    <div class="showcase-panel docs-modal-controls">
+      <div class="form-showcase">
+        <AppField label="Tamaño" for-id="modal-demo-size">
+          <select id="modal-demo-size" v-model="interactiveSize" class="app-control app-control--md">
+            <option value="sm">sm</option><option value="md">md</option>
+            <option value="lg">lg</option><option value="xl">xl</option>
+          </select>
+        </AppField>
+        <AppField label="Color del icono" for-id="modal-demo-tone">
+          <select id="modal-demo-tone" v-model="interactiveTone" class="app-control app-control--md">
+            <option value="default">default</option><option value="primary">primary</option>
+            <option value="success">success</option><option value="info">info</option>
+            <option value="warning">warning</option><option value="danger">danger</option>
+          </select>
+        </AppField>
+      </div>
+      <div class="component-row">
+        <AppCheckbox v-model="interactiveCentered" label="Centrado" />
+        <AppCheckbox v-model="interactiveScrollable" label="Cuerpo desplazable" />
+        <AppCheckbox v-model="interactiveBackdrop" label="Cerrar con fondo" />
+        <AppCheckbox v-model="interactiveEscape" label="Cerrar con Escape" />
+        <AppCheckbox v-model="interactiveClose" label="Mostrar cierre" />
+      </div>
+      <div><AppButton data-testid="open-interactive-modal" @click="interactiveOpen = true">Probar configuración</AppButton></div>
+    </div>
+
+    <DocsCodeBlock :code="modalExamples.interactive" />
+
+    <AppModal
+      v-model="interactiveOpen"
+      :size="interactiveSize"
+      :tone="interactiveTone"
+      :centered="interactiveCentered"
+      :scrollable="interactiveScrollable"
+      :close-on-backdrop="interactiveBackdrop"
+      :close-on-escape="interactiveEscape"
+      :show-close="interactiveClose"
+      :icon="Maximize2"
+      title="Vista previa del modal"
+      description="Esta ventana refleja los controles seleccionados."
+    >
+      <p v-for="paragraph in (interactiveScrollable ? 8 : 1)" :key="paragraph">
+        Contenido de demostración {{ paragraph }}. Cambia las opciones y vuelve a abrir para comparar el comportamiento.
+      </p>
+      <template #footer>
+        <AppButton variant="ghost" color="neutral" @click="interactiveOpen = false">Cancelar</AppButton>
+        <AppButton @click="interactiveOpen = false">Aceptar</AppButton>
+      </template>
+    </AppModal>
+  </section>
   <DocsModalReference />
 </template>
-

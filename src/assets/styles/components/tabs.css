@@ -1,0 +1,210 @@
+.app-tabs {
+  width: 100%;
+}
+
+.app-tabs__list {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+}
+
+.app-tabs__tab {
+  position: relative;
+  display: inline-flex;
+  min-height: 44px;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  color: var(--color-muted);
+  font: inherit;
+  text-align: left;
+  transition:
+    color 150ms ease,
+    background-color 150ms ease,
+    border-color 150ms ease;
+}
+
+.app-tabs__tab:hover:not(:disabled) {
+  color: var(--color-primary);
+}
+
+.app-tabs__tab:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.app-tabs__label {
+  display: grid;
+  gap: 1px;
+}
+
+.app-tabs__label strong {
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.app-tabs__label small {
+  color: var(--color-muted);
+  font-size: 0.68rem;
+  line-height: 1.35;
+}
+
+.app-tabs__badge {
+  display: inline-grid;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--color-light);
+  color: var(--color-gray-700);
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+
+.app-tabs--line .app-tabs__list {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.app-tabs--line .app-tabs__tab::after {
+  position: absolute;
+  right: 10px;
+  bottom: -1px;
+  left: 10px;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  background: var(--color-primary);
+  content: '';
+  opacity: 0;
+  transform: scaleX(0.7);
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease;
+}
+
+.app-tabs--line .app-tabs__tab[aria-selected='true'] {
+  color: var(--color-primary);
+}
+
+.app-tabs--line .app-tabs__tab[aria-selected='true']::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.app-tabs--pill .app-tabs__list {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 9px;
+  background: var(--color-light);
+}
+
+.app-tabs--pill .app-tabs__tab {
+  min-height: 38px;
+  border-radius: 7px;
+}
+
+.app-tabs--pill .app-tabs__tab[aria-selected='true'] {
+  background: var(--color-surface);
+  box-shadow: 0 2px 8px rgba(24, 28, 50, 0.1);
+  color: var(--color-primary);
+}
+
+.app-tabs--boxed .app-tabs__list {
+  gap: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 9px 9px 0 0;
+  background: var(--color-light);
+}
+
+.app-tabs--boxed .app-tabs__tab {
+  border-right: 1px solid var(--color-border);
+}
+
+.app-tabs--boxed .app-tabs__tab:last-child {
+  border-right: 0;
+}
+
+.app-tabs--boxed .app-tabs__tab[aria-selected='true'] {
+  background: var(--color-surface);
+  color: var(--color-primary);
+}
+
+.app-tabs--fitted .app-tabs__tab {
+  flex: 1 1 0;
+}
+
+.app-tabs__panel {
+  min-height: 120px;
+  padding: 22px 4px 4px;
+  outline: none;
+}
+
+.app-tabs__panel:focus-visible {
+  border-radius: 7px;
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+.app-tabs--vertical {
+  display: grid;
+  grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
+  gap: 24px;
+}
+
+.app-tabs--vertical .app-tabs__list {
+  display: flex;
+  overflow: visible;
+  flex-direction: column;
+  align-items: stretch;
+  border: 0;
+}
+
+.app-tabs--vertical .app-tabs__tab {
+  justify-content: flex-start;
+  border: 0;
+  border-radius: 7px;
+}
+
+.app-tabs--vertical.app-tabs--line .app-tabs__tab::after {
+  top: 8px;
+  right: auto;
+  bottom: 8px;
+  left: 0;
+  width: 3px;
+  height: auto;
+  transform: scaleY(0.7);
+}
+
+.app-tabs--vertical.app-tabs--line .app-tabs__tab[aria-selected='true'] {
+  background: var(--color-primary-light);
+}
+
+.app-tabs--vertical.app-tabs--line .app-tabs__tab[aria-selected='true']::after {
+  transform: scaleY(1);
+}
+
+.app-tabs--vertical .app-tabs__panel {
+  padding: 8px 0 0;
+}
+
+@media (max-width: 700px) {
+  .app-tabs--vertical {
+    display: block;
+  }
+
+  .app-tabs--vertical .app-tabs__list {
+    display: flex;
+    overflow-x: auto;
+    flex-direction: row;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .app-tabs--vertical .app-tabs__tab {
+    justify-content: center;
+  }
+}

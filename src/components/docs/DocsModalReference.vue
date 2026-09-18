@@ -21,7 +21,7 @@ const properties = [
 <template>
   <section class="component-section">
     <div class="section-heading">
-      <div><span>06</span><h2>Referencia de AppModal</h2></div>
+      <div><span>07</span><h2>Referencia de AppModal</h2></div>
       <p>Propiedades, eventos, slots y comportamiento accesible.</p>
     </div>
 
