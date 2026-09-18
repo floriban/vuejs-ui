@@ -532,3 +532,55 @@
       margin-left: auto;
     }
 }
+/* Grouped component navigation */
+.docs-nav {
+  display: grid;
+  gap: 4px;
+}
+.docs-nav__entry {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  width: 100%;
+  min-height: 44px;
+  padding: 9px 15px;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-sm);
+  color: var(--color-sidebar-text);
+  background: transparent;
+  font: inherit;
+  font-size: .86rem;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 180ms ease, background-color 180ms ease;
+}
+.docs-nav__entry > svg:first-child { flex: 0 0 auto; color: var(--color-sidebar-icon); transition: color 180ms ease; }
+.docs-nav__entry:hover, .docs-nav__entry:focus-visible { color: var(--color-white); background: var(--color-sidebar-active); outline: none; }
+.docs-nav__entry:hover > svg:first-child, .docs-nav__entry:focus-visible > svg:first-child { color: var(--color-primary); }
+.docs-nav__group.is-active > .docs-nav__group-toggle { color: var(--color-white); background: var(--color-sidebar-active); }
+.docs-nav__group.is-active > .docs-nav__group-toggle > svg:first-child { color: var(--color-primary); }
+.docs-nav__group-arrow { flex: 0 0 auto; margin-left: auto; color: var(--color-sidebar-icon); transition: transform 200ms ease; }
+.docs-nav__group.is-open .docs-nav__group-arrow { transform: rotate(90deg); }
+.docs-nav__submenu-wrap { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 220ms ease, opacity 180ms ease; }
+.docs-nav__group.is-open .docs-nav__submenu-wrap { grid-template-rows: 1fr; opacity: 1; }
+.docs-nav__submenu { min-height: 0; overflow: hidden; }
+.docs-nav__submenu a { gap: 11px; min-height: 36px; padding: 7px 14px 7px 47px; border-radius: var(--radius-sm); font-size: .79rem; }
+.docs-nav__submenu a i { flex: 0 0 auto; width: 5px; height: 5px; border-radius: 50%; background: var(--color-sidebar-icon); transition: background-color 180ms ease; }
+.docs-nav__submenu a:hover i, .docs-nav__submenu a:focus-visible i, .docs-nav__submenu a.router-link-active i { background: var(--color-primary); }
+.dashboard-topbar__link.router-link-active { color: var(--color-primary); background: var(--color-primary-light); }
+
+@media (min-width: 801px) {
+  .docs-layout--collapsed .docs-sidebar:not(:hover):not(:has(.docs-nav :focus-visible)):not(:has(.brand:focus-visible)) .docs-nav__submenu-wrap { display: none; }
+  .docs-layout--collapsed .docs-sidebar:not(:hover):not(:has(.docs-nav :focus-visible)):not(:has(.brand:focus-visible)) :is(.docs-nav__entry > span, .docs-nav__group-arrow) { opacity: 0; pointer-events: none; }
+  .docs-layout--collapsed .docs-sidebar:not(:hover):not(:has(.docs-nav :focus-visible)):not(:has(.brand:focus-visible)) .docs-nav__entry { padding-inline: 12px; }
+}
+
+@media (max-width: 800px) {
+  .docs-nav { display: grid; gap: 4px; overflow: visible; }
+  .docs-nav__entry { padding: 9px 12px; }
+  .docs-nav__entry > span, .docs-nav__submenu a span { display: inline; }
+  .docs-nav__submenu a { padding-left: 47px; }
+  .docs-nav__group-arrow { display: block; }
+}
