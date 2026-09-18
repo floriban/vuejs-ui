@@ -18,5 +18,8 @@
 @import "./styles/components/pagination.css";
 @import "./styles/components/tooltips.css";
 @import "./styles/components/popovers.css";
+@import "./styles/components/timeline-spinners.css";
+@import "./styles/components/advanced-forms.css";
+@import "./styles/components/sweetalert.css";
 @import "./styles/docs.css";
 @import "./styles/accessibility.css";

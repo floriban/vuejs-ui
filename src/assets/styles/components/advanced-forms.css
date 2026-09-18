@@ -1,0 +1,38 @@
+.app-input-affix { position: relative; display: block; }
+.app-input-affix > svg { position: absolute; z-index: 1; top: 50%; left: 12px; color: var(--color-gray-500); pointer-events: none; transform: translateY(-50%); }
+.app-control--with-icon { padding-left: 40px; }
+.app-control[type="date"], .app-control[type="time"] { color-scheme: light; }
+.app-control[type="date"]::-webkit-calendar-picker-indicator, .app-control[type="time"]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: .55; }
+.docs-value-preview { display: flex; gap: 9px; align-items: center; min-height: 42px; padding: 9px 12px; border-radius: var(--radius-sm); color: var(--color-gray-700); background: var(--color-light); font-size: .82rem; }
+.docs-value-preview strong { color: var(--color-dark); font-weight: 600; }
+.app-autocomplete, .app-advanced-select { position: relative; }
+.app-autocomplete__control { position: relative; }
+.app-autocomplete__control > svg { position: absolute; z-index: 1; top: 50%; left: 12px; color: var(--color-gray-500); transform: translateY(-50%); }
+.app-autocomplete__control .app-control { padding-right: 38px; padding-left: 39px; }
+.app-autocomplete__control > button { position: absolute; top: 50%; right: 9px; display: grid; place-items: center; width: 26px; height: 26px; padding: 0; border: 0; border-radius: 50%; color: var(--color-gray-500); background: transparent; cursor: pointer; transform: translateY(-50%); }
+.app-autocomplete__control > button:hover { color: var(--color-dark); background: var(--color-light); }
+.app-option-menu { z-index: 30; margin: 6px 0 0; padding: 6px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-white); box-shadow: var(--shadow-dropdown); list-style: none; }
+.app-autocomplete > .app-option-menu { position: absolute; right: 0; left: 0; max-height: 260px; overflow: auto; }
+.app-option-menu li:not(.app-option-menu__empty) { display: flex; justify-content: space-between; gap: 16px; align-items: center; padding: 9px 10px; border-radius: .32rem; color: var(--color-gray-800); cursor: pointer; }
+.app-option-menu li:not(.app-option-menu__empty):hover, .app-option-menu li.is-active, .app-option-menu li.is-selected { color: var(--color-primary); background: var(--color-primary-light); }
+.app-option-menu li.is-disabled { cursor: not-allowed; opacity: .5; }
+.app-option-menu strong { display: block; font-size: .82rem; font-weight: 500; }
+.app-option-menu small { display: block; margin-top: 2px; color: var(--color-muted); font-size: .7rem; }
+.app-option-menu__empty { padding: 13px 10px; color: var(--color-muted); font-size: .78rem; text-align: center; }
+.app-advanced-select__trigger { display: flex; justify-content: space-between; gap: 10px; align-items: center; text-align: left; cursor: pointer; }
+.app-advanced-select__placeholder { color: var(--color-gray-500); }
+.app-advanced-select__value { overflow: hidden; color: var(--color-gray-800); text-overflow: ellipsis; white-space: nowrap; }
+.app-advanced-select__actions { display: inline-flex; gap: 5px; align-items: center; margin-left: auto; color: var(--color-gray-500); }
+.app-advanced-select__actions [role="button"] { display: grid; place-items: center; }
+.app-advanced-select.is-open .app-advanced-select__trigger { border-color: var(--color-control-focus); }
+.app-advanced-select.is-open .app-advanced-select__actions > svg { transform: rotate(180deg); }
+.app-advanced-select__menu { position: absolute; z-index: 35; top: calc(100% + 6px); right: 0; left: 0; padding: 7px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-white); box-shadow: var(--shadow-dropdown); }
+.app-advanced-select__search { display: flex; gap: 8px; align-items: center; padding: 7px 9px; border: 1px solid var(--color-gray-300); border-radius: .32rem; color: var(--color-gray-500); }
+.app-advanced-select__search input { min-width: 0; width: 100%; padding: 0; border: 0; outline: 0; color: var(--color-gray-800); background: transparent; font: inherit; font-size: .78rem; }
+.app-advanced-select__options { max-height: 230px; margin-top: 6px; overflow: auto; border: 0; box-shadow: none; }
+.app-advanced-select__tags { display: flex; gap: 5px; align-items: center; min-width: 0; overflow: hidden; }
+.app-advanced-select__tag { display: inline-flex; gap: 4px; align-items: center; max-width: 150px; padding: 3px 7px; border-radius: 999px; color: var(--color-primary); background: var(--color-primary-light); font-size: .7rem; white-space: nowrap; }
+.app-advanced-select__tag > span { display: grid; place-items: center; }
+.app-advanced-select__count { color: var(--color-muted); font-size: .72rem; }
+.docs-form-component-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 700px) { .docs-form-component-grid { grid-template-columns: 1fr; } }

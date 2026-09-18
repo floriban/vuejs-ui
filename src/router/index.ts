@@ -89,6 +89,46 @@ const router = createRouter({
           name: 'popovers',
           component: () => import('../views/PopoversView.vue'),
         },
+        {
+          path: 'timeline',
+          name: 'timeline',
+          component: () => import('../views/TimelineView.vue'),
+        },
+        {
+          path: 'spinners',
+          name: 'spinners',
+          component: () => import('../views/SpinnersView.vue'),
+        },
+        {
+          path: 'datepicker',
+          name: 'datepicker',
+          component: () => import('../views/DatePickerView.vue'),
+        },
+        {
+          path: 'timepicker',
+          name: 'timepicker',
+          component: () => import('../views/TimePickerView.vue'),
+        },
+        {
+          path: 'autocomplete',
+          name: 'autocomplete',
+          component: () => import('../views/AutocompleteView.vue'),
+        },
+        {
+          path: 'input-mask',
+          name: 'input-mask',
+          component: () => import('../views/InputMaskView.vue'),
+        },
+        {
+          path: 'select2',
+          name: 'select2',
+          component: () => import('../views/AdvancedSelectView.vue'),
+        },
+        {
+          path: 'sweetalert2',
+          name: 'sweetalert2',
+          component: () => import('../views/SweetAlertView.vue'),
+        },
       ],
     },
   ],

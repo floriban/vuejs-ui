@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import DocsHeader from '../components/docs/DocsHeader.vue'
-import { Bell, BellRing, ChartNoAxesColumnIncreasing, ChevronsLeft, Columns3, CreditCard, FormInput, ListCollapse, ListOrdered, Menu, MessageCircleQuestion, MousePointerClick, PanelTopOpen, PanelsTopLeft, TableProperties, Tags, Users } from '@lucide/vue'
+import { Bell, BellRing, CalendarDays, ChartNoAxesColumnIncreasing, ChevronsLeft, Clock3, Columns3, CreditCard, FormInput, GitBranch, ListCollapse, ListFilter, ListOrdered, LoaderCircle, Menu, MessageCircleQuestion, MousePointerClick, PanelTopOpen, PanelsTopLeft, ScanLine, Search, Sparkles, TableProperties, Tags, Users } from '@lucide/vue'
 
 const route = useRoute()
 const collapsed = ref(true)
@@ -24,6 +24,14 @@ const sections = [
   { name: 'pagination', label: 'Pagination', icon: ListOrdered },
   { name: 'tooltips', label: 'Tooltips', icon: MessageCircleQuestion },
   { name: 'popovers', label: 'Popovers', icon: PanelTopOpen },
+  { name: 'timeline', label: 'Timeline', icon: GitBranch },
+  { name: 'spinners', label: 'Spinners', icon: LoaderCircle },
+  { name: 'datepicker', label: 'DatePicker', icon: CalendarDays },
+  { name: 'timepicker', label: 'TimePicker', icon: Clock3 },
+  { name: 'autocomplete', label: 'Autocomplete', icon: Search },
+  { name: 'input-mask', label: 'Input Mask', icon: ScanLine },
+  { name: 'select2', label: 'Select2', icon: ListFilter },
+  { name: 'sweetalert2', label: 'SweetAlert2', icon: Sparkles },
 ]
 </script>
 
