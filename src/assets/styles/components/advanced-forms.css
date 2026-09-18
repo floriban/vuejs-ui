@@ -49,3 +49,16 @@ span.flatpickr-weekday { color: var(--color-muted); font-weight: 600; }
 .flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange, .flatpickr-day.selected:hover, .flatpickr-day.startRange:hover, .flatpickr-day.endRange:hover { border-color: var(--color-primary); background: var(--color-primary); }
 .flatpickr-day.today { border-color: var(--color-primary); color: var(--color-primary); }
 .flatpickr-time input:hover, .flatpickr-time .flatpickr-am-pm:hover, .flatpickr-time input:focus { background: var(--color-light); }
+.app-advanced-select__trigger {
+  position: relative;
+  padding-right: 40px;
+}
+.app-advanced-select.has-clear .app-advanced-select__trigger { padding-right: 66px; }
+.app-advanced-select__actions { position: absolute; top: 50%; right: 12px; margin: 0; transform: translateY(-50%); }
+.app-advanced-select__clear { position: absolute; z-index: 2; top: 50%; right: 36px; display: grid; place-items: center; width: 24px; height: 24px; padding: 0; border: 0; border-radius: 50%; color: var(--color-gray-500); background: transparent; cursor: pointer; transform: translateY(-50%); }
+.app-advanced-select__clear:hover { color: var(--color-danger); background: var(--color-danger-light); }
+.app-advanced-select__clear:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 1px; }
+.app-advanced-select__clear:disabled { cursor: not-allowed; opacity: .5; }
+.app-advanced-select--compact .app-advanced-select__tags { flex-wrap: nowrap; }
+.app-advanced-select--expanded .app-advanced-select__trigger { height: auto; min-height: 42px; padding-block: 7px; }
+.app-advanced-select--expanded .app-advanced-select__tags { flex-wrap: wrap; overflow: visible; }
