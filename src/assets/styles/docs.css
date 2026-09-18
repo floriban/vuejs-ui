@@ -519,3 +519,45 @@ h1 {
   color: var(--color-muted);
   line-height: 1.65;
 }
+
+.docs-badge-controls,
+.docs-avatar-controls,
+.docs-progress-controls,
+.docs-pagination-controls,
+.docs-tooltip-controls,
+.docs-popover-controls {
+  display: grid;
+  gap: 18px;
+}
+
+.docs-avatar-row {
+  align-items: flex-end;
+}
+
+.progress-demo-list {
+  display: grid;
+  gap: 20px;
+}
+
+.docs-progress-circles {
+  gap: 24px;
+}
+
+.tooltip-placement-demo,
+.popover-placement-demo {
+  min-height: 120px;
+  justify-content: center;
+}
+
+.popover-result {
+  margin: 14px 0 0;
+  color: var(--color-success);
+  font-weight: 600;
+}
+
+.docs-reference-note {
+  margin: 18px 0 0;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  line-height: 1.65;
+}

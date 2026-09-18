@@ -12,5 +12,11 @@
 @import "./styles/components/dropdowns.css";
 @import "./styles/components/tabs.css";
 @import "./styles/components/accordions.css";
+@import "./styles/components/badges.css";
+@import "./styles/components/avatars.css";
+@import "./styles/components/progress.css";
+@import "./styles/components/pagination.css";
+@import "./styles/components/tooltips.css";
+@import "./styles/components/popovers.css";
 @import "./styles/docs.css";
 @import "./styles/accessibility.css";

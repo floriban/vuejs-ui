@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import DocsHeader from '../components/docs/DocsHeader.vue'
-import { Bell, BellRing, ChevronsLeft, Columns3, CreditCard, FormInput, ListCollapse, Menu, MousePointerClick, PanelsTopLeft, TableProperties } from '@lucide/vue'
+import { Bell, BellRing, ChartNoAxesColumnIncreasing, ChevronsLeft, Columns3, CreditCard, FormInput, ListCollapse, ListOrdered, Menu, MessageCircleQuestion, MousePointerClick, PanelTopOpen, PanelsTopLeft, TableProperties, Tags, Users } from '@lucide/vue'
 
 const route = useRoute()
 const collapsed = ref(true)
@@ -10,7 +10,7 @@ const currentTitle = computed(() => sections.find((section) => section.name === 
 const sections = [
   { name: 'buttons', label: 'Botones', icon: MousePointerClick },
   { name: 'alerts', label: 'Alertas', icon: BellRing },
-  { name: 'tables', label: 'Tablas', icon: TableProperties },
+  { name: 'tables', label: 'Tablas', icon: TableProperties, Tags, Users },
   { name: 'cards', label: 'Tarjetas', icon: CreditCard },
   { name: 'forms', label: 'Formularios', icon: FormInput },
   { name: 'modals', label: 'Modales', icon: PanelsTopLeft },
@@ -18,6 +18,12 @@ const sections = [
   { name: 'dropdowns', label: 'Dropdowns', icon: Menu },
   { name: 'tabs', label: 'Tabs', icon: Columns3 },
   { name: 'accordion', label: 'Accordion', icon: ListCollapse },
+  { name: 'badges', label: 'Badges', icon: Tags },
+  { name: 'avatars', label: 'Avatares', icon: Users },
+  { name: 'progress', label: 'Progress', icon: ChartNoAxesColumnIncreasing },
+  { name: 'pagination', label: 'Pagination', icon: ListOrdered },
+  { name: 'tooltips', label: 'Tooltips', icon: MessageCircleQuestion },
+  { name: 'popovers', label: 'Popovers', icon: PanelTopOpen },
 ]
 </script>
 

@@ -1,7 +1,7 @@
 # App UI
 
 Catálogo de componentes reutilizables con Vue 3, TypeScript, Vite y Tailwind CSS 4.
-Las rutas actuales son `/buttons`, `/forms`, `/alerts`, `/cards`, `/tables`, `/modals`, `/toasts`, `/dropdowns`, `/tabs` y `/accordion`.
+Las rutas actuales son `/buttons`, `/forms`, `/alerts`, `/cards`, `/tables`, `/modals`, `/toasts`, `/dropdowns`, `/tabs`, `/accordion`, `/badges`, `/avatars`, `/progress`, `/pagination`, `/tooltips` y `/popovers`.
 
 ## Desarrollo
 
@@ -29,7 +29,7 @@ puedes ejecutar `npm run dev` y `npm run build`. No hace falta reinstalar.
 - `src/assets/styles/theme.css`: colores, fuentes, radios y sombras.
 - `src/assets/styles/base.css`: estilos globales del documento.
 - `src/assets/styles/layout.css`: menú, header y distribución responsive.
-- `src/assets/styles/components/`: CSS de botones, formularios, alertas, tarjetas, tablas, modales, notificaciones, dropdowns, tabs y accordions.
+- `src/assets/styles/components/`: CSS de botones, formularios, alertas, tarjetas, tablas, modales, notificaciones, dropdowns, tabs, accordions, badges, avatares, progreso, paginación, tooltips y popovers.
 - `src/assets/styles/docs.css`: presentación de ejemplos y documentación.
 - `src/assets/styles/accessibility.css`: utilidades accesibles y reducción de movimiento.
 
@@ -47,7 +47,7 @@ Las variables locales como `--button-color` seleccionan los colores de cada vari
 
 ## Documentar un componente
 
-Las diez rutas `/buttons`, `/forms`, `/alerts`, `/cards`, `/tables`, `/modals`, `/toasts`, `/dropdowns`, `/tabs` y `/accordion` incluyen documentación de uso:
+Las dieciséis rutas `/buttons`, `/forms`, `/alerts`, `/cards`, `/tables`, `/modals`, `/toasts`, `/dropdowns`, `/tabs`, `/accordion`, `/badges`, `/avatars`, `/progress`, `/pagination`, `/tooltips` y `/popovers` incluyen documentación de uso:
 - Ejemplos visuales y código desplegable que se puede copiar.
 - Botones: demostración interactiva de carga, deshabilitado y clics.
 - Formularios: campos, selección, validación, mensajes asociados y envío.
@@ -59,6 +59,12 @@ Las diez rutas `/buttons`, `/forms`, `/alerts`, `/cards`, `/tables`, `/modals`, 
 - Dropdowns: alineación, posición automática, selección múltiple y menús de acciones.
 - Tabs: variantes, iconos, badges, orientación vertical y navegación automática por teclado.
 - Accordion: apertura única o múltiple, panel requerido, elementos deshabilitados y variantes.
+- Badges: colores, variantes, tamaños, iconos, puntos y cierre.
+- Avatares: imagen, iniciales, tamaños, formas, presencia y grupos.
+- Progress: indicadores lineales, circulares, animados e indeterminados.
+- Pagination: elipsis, páginas vecinas, extremos y estado deshabilitado.
+- Tooltips: cuatro posiciones, espera, foco, Escape y ajuste automático.
+- Popovers: paneles contextuales con acciones, formularios, foco y posicionamiento.
 - Tabla de propiedades con tipos y valores predeterminados.
 - Eventos nativos, atributos heredados, slots y notas de accesibilidad.
 
@@ -68,9 +74,9 @@ Los fragmentos cortos presuponen que el componente correspondiente está importa
 ## Estado de esta etapa
 
 - CSS organizado y colores centralizados.
-- AppButton, AppAlert, AppCard, AppTable, AppModal, Toast, Dropdown, Tabs, Accordion y los controles de formulario están documentados con ejemplos copiables, API y pruebas interactivas.
+- AppButton, AppAlert, AppCard, AppTable, AppModal, Toast, Dropdown, Tabs, Accordion, Badge, Avatar, Progress, Pagination, Tooltip, Popover y los controles de formulario están documentados con ejemplos copiables, API y pruebas interactivas.
 - Git iniciado con una versión anterior a la reorganización.
-- Las diez páginas del catálogo incluyen documentación y demostraciones interactivas.
+- Las dieciséis páginas del catálogo incluyen documentación y demostraciones interactivas.
 - Los controles de acciones del header son visuales, sin operaciones conectadas.
 
 Próxima etapa: construir una pantalla funcional que combine los componentes.

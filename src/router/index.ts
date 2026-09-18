@@ -59,6 +59,36 @@ const router = createRouter({
           name: 'accordion',
           component: () => import('../views/AccordionView.vue'),
         },
+        {
+          path: 'badges',
+          name: 'badges',
+          component: () => import('../views/BadgesView.vue'),
+        },
+        {
+          path: 'avatars',
+          name: 'avatars',
+          component: () => import('../views/AvatarsView.vue'),
+        },
+        {
+          path: 'progress',
+          name: 'progress',
+          component: () => import('../views/ProgressView.vue'),
+        },
+        {
+          path: 'pagination',
+          name: 'pagination',
+          component: () => import('../views/PaginationView.vue'),
+        },
+        {
+          path: 'tooltips',
+          name: 'tooltips',
+          component: () => import('../views/TooltipsView.vue'),
+        },
+        {
+          path: 'popovers',
+          name: 'popovers',
+          component: () => import('../views/PopoversView.vue'),
+        },
       ],
     },
   ],
