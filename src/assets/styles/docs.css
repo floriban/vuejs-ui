@@ -561,3 +561,16 @@ h1 {
   font-size: 0.8rem;
   line-height: 1.65;
 }
+
+.docs-component-controls {
+  display: grid;
+  gap: 20px;
+}
+
+.docs-component-controls > .component-row:last-child {
+  min-height: 72px;
+  padding: 18px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-light);
+}

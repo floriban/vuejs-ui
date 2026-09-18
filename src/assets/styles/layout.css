@@ -21,6 +21,25 @@
   color: var(--color-white);
   display: flex;
   flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-sidebar-border) transparent;
+}
+
+.docs-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.docs-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.docs-sidebar::-webkit-scrollbar-thumb {
+  border-radius: var(--radius-sm);
+  background: var(--color-sidebar-border);
+}
+
+.docs-sidebar:hover::-webkit-scrollbar-thumb {
+  background: var(--color-sidebar-icon);
 }
 
 .brand {

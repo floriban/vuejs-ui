@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, useId } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, useId, watch } from 'vue'
 import { Check, ChevronDown, Search, X } from '@lucide/vue'
+import { useFloatingPanel } from '../../composables/useFloatingPanel'
 
 export interface AdvancedSelectOption {
   label: string
@@ -22,6 +23,8 @@ const props = withDefaults(defineProps<{
 
 const model = defineModel<string | string[]>({ default: '' })
 const root = ref<HTMLElement>()
+const anchorRef = ref<HTMLElement>()
+const searchRef = ref<HTMLInputElement>()
 const open = ref(false)
 const query = ref('')
 const generatedId = useId()
@@ -33,6 +36,8 @@ const filtered = computed(() => {
   const search = query.value.trim().toLocaleLowerCase()
   return search ? props.options.filter((option) => `${option.label} ${option.description ?? ''}`.toLocaleLowerCase().includes(search)) : props.options
 })
+const { panel: panelRef, panelStyle, placement, update } = useFloatingPanel(anchorRef, open)
+watch(filtered, () => nextTick(update))
 
 function isSelected(value: string) { return values.value.includes(value) }
 function toggle(option: AdvancedSelectOption) {
@@ -42,14 +47,22 @@ function toggle(option: AdvancedSelectOption) {
 }
 function remove(value: string) { model.value = props.multiple ? values.value.filter((item) => item !== value) : '' }
 function clear(event: MouseEvent) { event.stopPropagation(); model.value = props.multiple ? [] : ''; query.value = '' }
-function closeFromOutside(event: MouseEvent) { if (root.value && !root.value.contains(event.target as Node)) open.value = false }
+async function toggleOpen() {
+  if (props.disabled) return
+  open.value = !open.value
+  if (open.value) { query.value = ''; await nextTick(); searchRef.value?.focus() }
+}
+function closeFromOutside(event: MouseEvent) {
+  const target = event.target as Node
+  if (!root.value?.contains(target) && !panelRef.value?.contains(target)) open.value = false
+}
 onMounted(() => document.addEventListener('mousedown', closeFromOutside))
 onBeforeUnmount(() => document.removeEventListener('mousedown', closeFromOutside))
 </script>
 
 <template>
   <div ref="root" class="app-advanced-select" :class="{ 'is-open': open, 'is-disabled': disabled }">
-    <button :id="controlId" class="app-control app-advanced-select__trigger" :class="`app-control--${size}`" type="button" role="combobox" :disabled="disabled" :aria-expanded="open" :aria-controls="listId" aria-haspopup="listbox" @click="open = !open">
+    <button :id="controlId" ref="anchorRef" class="app-control app-advanced-select__trigger" :class="`app-control--${size}`" type="button" role="combobox" :disabled="disabled" :aria-expanded="open" :aria-controls="listId" aria-haspopup="listbox" @click="toggleOpen" @keydown.esc="open = false">
       <span v-if="multiple && selected.length" class="app-advanced-select__tags">
         <span v-for="option in selected.slice(0, 2)" :key="option.value" class="app-advanced-select__tag">{{ option.label }}<span role="button" tabindex="0" :aria-label="`Quitar ${option.label}`" @click.stop="remove(option.value)" @keydown.enter.stop="remove(option.value)"><X :size="12" /></span></span>
         <span v-if="selected.length > 2" class="app-advanced-select__count">+{{ selected.length - 2 }}</span>
@@ -61,14 +74,16 @@ onBeforeUnmount(() => document.removeEventListener('mousedown', closeFromOutside
         <ChevronDown :size="17" aria-hidden="true" />
       </span>
     </button>
-    <div v-if="open" class="app-advanced-select__menu">
-      <label class="app-advanced-select__search"><Search :size="16" aria-hidden="true" /><input v-model="query" type="search" :placeholder="searchPlaceholder" aria-label="Buscar opciones" /></label>
-      <ul :id="listId" class="app-option-menu app-advanced-select__options" role="listbox" :aria-multiselectable="multiple || undefined">
-        <li v-for="option in filtered" :key="option.value" :class="{ 'is-selected': isSelected(option.value), 'is-disabled': option.disabled }" role="option" :aria-selected="isSelected(option.value)" :aria-disabled="option.disabled || undefined" @click="toggle(option)">
-          <span><strong>{{ option.label }}</strong><small v-if="option.description">{{ option.description }}</small></span><Check v-if="isSelected(option.value)" :size="17" />
-        </li>
-        <li v-if="!filtered.length" class="app-option-menu__empty">Sin resultados</li>
-      </ul>
-    </div>
+    <Teleport to="body">
+      <div v-if="open" ref="panelRef" class="app-advanced-select__menu app-floating-menu" :class="`app-floating-menu--${placement}`" :style="panelStyle">
+        <label class="app-advanced-select__search"><Search :size="16" aria-hidden="true" /><input ref="searchRef" v-model="query" type="search" :placeholder="searchPlaceholder" aria-label="Buscar opciones" @keydown.esc="open = false" /></label>
+        <ul :id="listId" class="app-option-menu app-advanced-select__options" role="listbox" :aria-multiselectable="multiple || undefined">
+          <li v-for="option in filtered" :key="option.value" :class="{ 'is-selected': isSelected(option.value), 'is-disabled': option.disabled }" role="option" :aria-selected="isSelected(option.value)" :aria-disabled="option.disabled || undefined" @click="toggle(option)">
+            <span><strong>{{ option.label }}</strong><small v-if="option.description">{{ option.description }}</small></span><Check v-if="isSelected(option.value)" :size="17" />
+          </li>
+          <li v-if="!filtered.length" class="app-option-menu__empty">Sin resultados</li>
+        </ul>
+      </div>
+    </Teleport>
   </div>
 </template>

@@ -12,7 +12,7 @@
 .app-autocomplete__control > button { position: absolute; top: 50%; right: 9px; display: grid; place-items: center; width: 26px; height: 26px; padding: 0; border: 0; border-radius: 50%; color: var(--color-gray-500); background: transparent; cursor: pointer; transform: translateY(-50%); }
 .app-autocomplete__control > button:hover { color: var(--color-dark); background: var(--color-light); }
 .app-option-menu { z-index: 30; margin: 6px 0 0; padding: 6px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-white); box-shadow: var(--shadow-dropdown); list-style: none; }
-.app-autocomplete > .app-option-menu { position: absolute; right: 0; left: 0; max-height: 260px; overflow: auto; }
+.app-floating-menu { z-index: 1100; margin: 0; overflow: auto; }
 .app-option-menu li:not(.app-option-menu__empty) { display: flex; justify-content: space-between; gap: 16px; align-items: center; padding: 9px 10px; border-radius: .32rem; color: var(--color-gray-800); cursor: pointer; }
 .app-option-menu li:not(.app-option-menu__empty):hover, .app-option-menu li.is-active, .app-option-menu li.is-selected { color: var(--color-primary); background: var(--color-primary-light); }
 .app-option-menu li.is-disabled { cursor: not-allowed; opacity: .5; }
@@ -26,7 +26,7 @@
 .app-advanced-select__actions [role="button"] { display: grid; place-items: center; }
 .app-advanced-select.is-open .app-advanced-select__trigger { border-color: var(--color-control-focus); }
 .app-advanced-select.is-open .app-advanced-select__actions > svg { transform: rotate(180deg); }
-.app-advanced-select__menu { position: absolute; z-index: 35; top: calc(100% + 6px); right: 0; left: 0; padding: 7px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-white); box-shadow: var(--shadow-dropdown); }
+.app-advanced-select__menu { z-index: 1100; margin: 0; padding: 7px; overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-white); box-shadow: var(--shadow-dropdown); }
 .app-advanced-select__search { display: flex; gap: 8px; align-items: center; padding: 7px 9px; border: 1px solid var(--color-gray-300); border-radius: .32rem; color: var(--color-gray-500); }
 .app-advanced-select__search input { min-width: 0; width: 100%; padding: 0; border: 0; outline: 0; color: var(--color-gray-800); background: transparent; font: inherit; font-size: .78rem; }
 .app-advanced-select__options { max-height: 230px; margin-top: 6px; overflow: auto; border: 0; box-shadow: none; }
@@ -36,3 +36,16 @@
 .app-advanced-select__count { color: var(--color-muted); font-size: .72rem; }
 .docs-form-component-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 @media (max-width: 700px) { .docs-form-component-grid { grid-template-columns: 1fr; } }
+.app-floating-menu--top { transform-origin: bottom center; }
+.app-floating-menu--bottom { transform-origin: top center; }
+.app-flatpickr > .app-control { width: 100%; }
+.flatpickr-calendar { z-index: 1200; border: 1px solid var(--color-border); border-radius: var(--radius-md); font-family: var(--font-sans); box-shadow: var(--shadow-dropdown); }
+.flatpickr-calendar.arrowTop::before { border-bottom-color: var(--color-border); }
+.flatpickr-months .flatpickr-month, .flatpickr-current-month .flatpickr-monthDropdown-months { color: var(--color-dark); fill: var(--color-dark); }
+.flatpickr-current-month input.cur-year, .flatpickr-current-month .flatpickr-monthDropdown-months { font-weight: 500; }
+span.flatpickr-weekday { color: var(--color-muted); font-weight: 600; }
+.flatpickr-day { color: var(--color-gray-700); border-radius: var(--radius-sm); }
+.flatpickr-day:hover, .flatpickr-day:focus { border-color: var(--color-primary-light); background: var(--color-primary-light); }
+.flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange, .flatpickr-day.selected:hover, .flatpickr-day.startRange:hover, .flatpickr-day.endRange:hover { border-color: var(--color-primary); background: var(--color-primary); }
+.flatpickr-day.today { border-color: var(--color-primary); color: var(--color-primary); }
+.flatpickr-time input:hover, .flatpickr-time .flatpickr-am-pm:hover, .flatpickr-time input:focus { background: var(--color-light); }

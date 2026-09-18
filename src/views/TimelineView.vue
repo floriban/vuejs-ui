@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { Check, CircleDollarSign, PackageCheck, Send } from '@lucide/vue'
 import DocsCodeBlock from '../components/docs/DocsCodeBlock.vue'
 import DocsPageHeader from '../components/docs/DocsPageHeader.vue'
+import DocsApiReference from '../components/docs/DocsApiReference.vue'
 import AppCard from '../components/ui/AppCard.vue'
 import AppCheckbox from '../components/ui/AppCheckbox.vue'
 import AppTimeline, { type TimelineItem } from '../components/ui/AppTimeline.vue'
@@ -17,10 +18,16 @@ const items: TimelineItem[] = [
 ]
 const basicCode = `<AppTimeline :items="events" />`
 const interactiveCode = `<AppTimeline :items="events" :compact="compact" :align="alternate ? 'alternate' : 'left'" />`
+const properties = [
+  ['items', 'TimelineItem[]', 'requerido', 'Eventos ordenados que componen la línea de tiempo.'],
+  ['align', 'left | alternate', 'left', 'Distribución vertical o alternada.'],
+  ['compact', 'boolean', 'false', 'Reduce la separación entre eventos.'],
+] as const
 </script>
 
 <template>
   <DocsPageHeader eyebrow="Componentes / Timeline" title="Timeline" description="Representa procesos, actividad y eventos ordenados con estados semánticos." />
   <section class="component-section"><div class="section-heading"><div><span>01</span><h2>Vertical</h2></div><p>Secuencia clara para actividad reciente.</p></div><AppCard title="Estado del pedido"><AppTimeline :items="items" /></AppCard><DocsCodeBlock :code="basicCode" /></section>
-  <section class="component-section"><div class="section-heading"><div><span>02</span><h2>Prueba interactiva</h2></div><p>Cambia densidad y alineación.</p></div><div class="showcase-panel"><div class="component-row"><AppCheckbox v-model="compact" label="Compacto" /><AppCheckbox v-model="alternate" label="Alternado" /></div><AppTimeline :items="items" :compact="compact" :align="alternate ? 'alternate' : 'left'" /></div><DocsCodeBlock :code="interactiveCode" /></section>
+  <section class="component-section"><div class="section-heading"><div><span>02</span><h2>Prueba interactiva</h2></div><p>Cambia densidad y alineación.</p></div><div class="showcase-panel docs-component-controls"><div class="component-row"><AppCheckbox v-model="compact" label="Compacto" /><AppCheckbox v-model="alternate" label="Alternado" /></div><AppTimeline :items="items" :compact="compact" :align="alternate ? 'alternate' : 'left'" /></div><DocsCodeBlock :code="interactiveCode" /></section>
+  <DocsApiReference component-name="AppTimeline" :rows="properties" note="El slot item recibe cada evento para añadir acciones o contenido personalizado." />
 </template>
