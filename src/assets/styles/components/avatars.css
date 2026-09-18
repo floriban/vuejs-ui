@@ -1,6 +1,8 @@
 .app-avatar-wrap {
   position: relative;
   display: inline-flex;
+  width: fit-content;
+  height: fit-content;
   flex: none;
 }
 
