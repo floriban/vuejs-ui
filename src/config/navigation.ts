@@ -63,6 +63,8 @@ export const navigationGroups: NavigationGroup[] = [
       { name: 'dropdowns', label: 'Dropdowns' },
       { name: 'tabs', label: 'Tabs' },
       { name: 'accordion', label: 'Accordion' },
+      { name: 'breadcrumbs', label: 'Breadcrumbs' },
+      { name: 'stepper', label: 'Stepper' },
     ],
   },
   {
@@ -76,6 +78,7 @@ export const navigationGroups: NavigationGroup[] = [
       { name: 'toasts', label: 'Notificaciones' },
       { name: 'progress', label: 'Progress' },
       { name: 'spinners', label: 'Spinners' },
+      { name: 'skeleton', label: 'Skeleton' },
       { name: 'tooltips', label: 'Tooltips' },
       { name: 'popovers', label: 'Popovers' },
       { name: 'sweetalert2', label: 'SweetAlert2' },

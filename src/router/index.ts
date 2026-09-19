@@ -63,6 +63,15 @@ const router = createRouter({
           path: 'accordion',
           name: 'accordion',
           component: () => import('../views/AccordionView.vue'),
+        },        {
+          path: 'breadcrumbs',
+          name: 'breadcrumbs',
+          component: () => import('../views/BreadcrumbsView.vue'),
+        },
+        {
+          path: 'stepper',
+          name: 'stepper',
+          component: () => import('../views/StepperView.vue'),
         },
         {
           path: 'badges',
@@ -103,6 +112,10 @@ const router = createRouter({
           path: 'spinners',
           name: 'spinners',
           component: () => import('../views/SpinnersView.vue'),
+        },        {
+          path: 'skeleton',
+          name: 'skeleton',
+          component: () => import('../views/SkeletonView.vue'),
         },
         {
           path: 'datepicker',
