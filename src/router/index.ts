@@ -143,6 +143,11 @@ const router = createRouter({
           component: () => import('../views/AdvancedSelectView.vue'),
         },
         {
+          path: 'file-upload',
+          name: 'file-upload',
+          component: () => import('../views/FileUploadView.vue'),
+        },
+        {
           path: 'sweetalert2',
           name: 'sweetalert2',
           component: () => import('../views/SweetAlertView.vue'),

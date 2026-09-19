@@ -42,6 +42,7 @@ export const navigationGroups: NavigationGroup[] = [
       { name: 'autocomplete', label: 'Autocomplete' },
       { name: 'input-mask', label: 'Input Mask' },
       { name: 'select2', label: 'Select2' },
+      { name: 'file-upload', label: 'File Upload' },
     ],
   },
   {
