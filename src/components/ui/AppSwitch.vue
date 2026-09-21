@@ -2,6 +2,7 @@
 import { useId } from 'vue'
 
 defineProps<{
+  size?: 'sm' | 'md' | 'lg'
   id?: string
   label: string
   disabled?: boolean
@@ -14,7 +15,7 @@ const generatedId = useId()
 </script>
 
 <template>
-  <div class="app-switch" :class="{ 'app-choice--disabled': disabled }">
+  <div class="app-switch" :class="[{ 'app-choice--disabled': disabled }, `app-choice-size--${size ?? 'md'}`]">
     <button
       :id="id ?? generatedId"
       type="button"

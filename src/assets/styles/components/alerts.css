@@ -50,7 +50,7 @@
 }
 
 .app-alert--solid {
-  color: var(--color-white);
+  color: #ffffff;
   border-color: var(--alert-solid);
   background: var(--alert-solid);
 }

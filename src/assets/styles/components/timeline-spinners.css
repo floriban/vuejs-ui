@@ -39,7 +39,7 @@
   height: 34px;
   border: 6px solid var(--color-white);
   border-radius: 50%;
-  color: var(--color-white);
+  color: #ffffff;
   background: var(--timeline-color);
   box-shadow: 0 0 0 1px var(--timeline-line);
 }

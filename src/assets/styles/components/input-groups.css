@@ -1,0 +1,20 @@
+.app-input-group { display: flex; width: 100%; min-width: 0; }
+.app-input-group > * { position: relative; min-width: 0; margin: 0; border-radius: 0; }
+.app-input-group > .app-control { flex: 1 1 auto; }
+.app-input-group > .app-select { flex: 0 0 auto; width: auto; max-width: 46%; }
+.app-input-group > :first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+.app-input-group > :last-child { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+.app-input-group > :only-child { border-radius: var(--radius-sm); }
+.app-input-group > * + * { margin-left: -1px; }
+.app-input-group > *:focus, .app-input-group > *:focus-visible { z-index: 2; }
+.app-input-group__addon { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; padding-inline: 13px; border: 1px solid var(--color-gray-300); background: var(--color-light); color: var(--color-gray-700); font-size: .82rem; white-space: nowrap; }
+.app-input-group--sm .app-input-group__addon { min-height: 34px; padding-inline: 10px; font-size: .76rem; }
+.app-input-group--md .app-input-group__addon { min-height: 42px; }
+.app-input-group--lg .app-input-group__addon { min-height: 50px; padding-inline: 16px; font-size: .9rem; }
+.app-input-group.is-invalid > * { border-color: var(--color-danger); }
+.app-input-group.is-disabled { opacity: .65; }
+.app-input-group.is-disabled > * { pointer-events: none; }
+@media (max-width: 480px) {
+  .app-input-group--responsive { flex-wrap: wrap; gap: 8px; }
+  .app-input-group--responsive > * { flex: 1 1 100%; width: 100%; max-width: none; margin-left: 0; border-radius: var(--radius-sm); }
+}

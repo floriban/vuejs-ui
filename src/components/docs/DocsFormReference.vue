@@ -3,6 +3,7 @@ import AppCard from '../ui/AppCard.vue'
 import AppTable from '../ui/AppTable.vue'
 
 const properties = [
+  ['AppCheckbox / AppSwitch / AppRadioGroup', 'size', 'sm | md | lg', 'md', 'Tamaño del control de selección.'],
   ['AppField', 'label', 'string', '—', 'Etiqueta visual del campo.'],
   ['AppField', 'forId', 'string', 'undefined', 'Id del control asociado; usa for-id en el template.'],
   ['AppField', 'help / error', 'string', 'undefined', 'Mensaje descriptivo o error; error tiene prioridad.'],
@@ -25,7 +26,7 @@ const properties = [
 <template>
   <section class="component-section">
     <div class="section-heading">
-      <div><span>06</span><h2>Referencia de formularios</h2></div>
+      <div><span>15</span><h2>Referencia de formularios</h2></div>
       <p>Propiedades, v-model y asociaciones accesibles.</p>
     </div>
     <AppCard title="API de controles">

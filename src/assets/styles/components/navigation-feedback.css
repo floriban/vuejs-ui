@@ -17,7 +17,7 @@
 .app-stepper__item button:focus-visible { border-radius: var(--radius-sm); outline: 3px solid var(--color-focus-ring); outline-offset: 4px; }
 .app-stepper__item.is-disabled { opacity: .55; }
 .app-stepper__marker { display: grid; place-items: center; flex: 0 0 auto; width: 34px; height: 34px; border: 2px solid var(--step-color); border-radius: 50%; color: var(--step-color); background: var(--color-white); font-size: .76rem; font-weight: 600; transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease; }
-.app-stepper__item--active .app-stepper__marker, .app-stepper__item--completed .app-stepper__marker, .app-stepper__item--error .app-stepper__marker { color: var(--color-white); background: var(--step-color); }
+.app-stepper__item--active .app-stepper__marker, .app-stepper__item--completed .app-stepper__marker, .app-stepper__item--error .app-stepper__marker { color: #ffffff; background: var(--step-color); }
 .app-stepper__content { display: grid; gap: 3px; padding-top: 2px; }
 .app-stepper__content strong { color: var(--color-dark); font-size: .82rem; font-weight: 600; line-height: 1.35; }
 .app-stepper__content small { color: var(--color-muted); font-size: .7rem; line-height: 1.4; }

@@ -1,0 +1,35 @@
+.charts-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.app-chart { width: 100%; min-width: 0; }
+.app-editor { overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-gray-800); }
+.app-editor:focus-within { border-color: var(--color-control-focus); box-shadow: 0 0 0 3px var(--color-focus-ring); }
+.app-editor__toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; padding: 8px; background: var(--color-light); border-bottom: 1px solid var(--color-border); }
+.app-editor__group { display: flex; gap: 2px; border-left: 1px solid var(--color-border); padding-left: 6px; }
+.app-editor__toolbar button { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 34px; border: 0; border-radius: 4px; color: var(--color-gray-800); background: transparent; cursor: pointer; }
+.app-editor__toolbar button:hover:not(:disabled), .app-editor__toolbar button.is-active { background: var(--color-primary-light); color: var(--color-primary); }
+.app-editor__toolbar button:disabled { opacity: .35; cursor: not-allowed; }
+.app-editor__toolbar button:focus-visible, .app-editor__toolbar select:focus-visible { outline: 2px solid var(--color-control-focus); outline-offset: 1px; }
+.app-editor__toolbar select { max-width: 130px; padding: 6px; border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-surface); color: inherit; font-size: .8rem; }
+.app-editor .tiptap { min-height: 300px; padding: 24px; outline: none; font-size: .9rem; line-height: 1.8; overflow-wrap: anywhere; }
+.app-editor .tiptap > * + * { margin-top: .8em; }
+.app-editor .tiptap h1 { font-size: 1.9em; font-weight: 600; }
+.app-editor .tiptap h2 { font-size: 1.5em; font-weight: 600; }
+.app-editor .tiptap h3 { font-size: 1.2em; font-weight: 600; }
+.app-editor .tiptap ul { list-style: disc; padding-left: 1.6em; }
+.app-editor .tiptap ol { list-style: decimal; padding-left: 1.6em; }
+.app-editor .tiptap blockquote { border-left: 3px solid var(--color-primary); padding-left: 16px; color: var(--color-muted); }
+.app-editor .tiptap a { color: var(--color-primary); text-decoration: underline; }
+.app-editor .tiptap pre { white-space: pre-wrap; background: var(--color-light); padding: 12px; border-radius: 4px; }
+.app-editor .tiptap code { background: var(--color-light); padding: 2px 4px; font-family: monospace; }
+.app-editor .tiptap p.is-editor-empty:first-child::before { content: attr(data-placeholder); float: left; height: 0; pointer-events: none; color: var(--color-muted); }
+.app-editor .tiptap table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.app-editor .tiptap th, .app-editor .tiptap td { border: 1px solid var(--color-border); padding: 8px; vertical-align: top; position: relative; }
+.app-editor .tiptap th { background: var(--color-light); font-weight: 600; }
+.app-editor .tiptap .selectedCell { background: var(--color-primary-light); }
+.app-editor__footer { display: flex; justify-content: space-between; gap: 12px; padding: 10px 16px; border-top: 1px solid var(--color-border); color: var(--color-muted); font-size: .7rem; }
+.app-editor__link { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; padding: 12px; border-bottom: 1px solid var(--color-border); font-size: .8rem; }
+.app-editor__link label { display: grid; gap: 4px; flex: 1; min-width: 160px; }
+.app-editor__link input { border: 1px solid var(--color-border); padding: 7px; background: var(--color-surface); border-radius: 4px; color: inherit; }
+.app-editor__link button { padding: 8px; border-radius: 4px; background: var(--color-light); cursor: pointer; }
+.app-editor__link [role='alert'] { flex-basis: 100%; color: var(--color-danger); }
+.editor-demo-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; font-size: .8rem; }
+@media (max-width: 900px) { .charts-grid { grid-template-columns: 1fr; } .app-editor .tiptap { padding: 16px; } }

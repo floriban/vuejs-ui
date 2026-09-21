@@ -2,6 +2,7 @@
 import { useId } from 'vue'
 
 defineProps<{
+  size?: 'sm' | 'md' | 'lg'
   id?: string
   label: string
   disabled?: boolean
@@ -14,7 +15,7 @@ const generatedId = useId()
 </script>
 
 <template>
-  <label class="app-choice" :class="{ 'app-choice--disabled': disabled }" :for="id ?? generatedId">
+  <label class="app-choice" :class="[{ 'app-choice--disabled': disabled }, `app-choice-size--${size ?? 'md'}`]" :for="id ?? generatedId">
     <input
       v-model="model"
       :id="id ?? generatedId"

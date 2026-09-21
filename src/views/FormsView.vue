@@ -1,181 +1,78 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import { ClipboardCheck } from '@lucide/vue'
+import { computed, nextTick, reactive, ref, watch } from 'vue'
 import DocsPageHeader from '../components/docs/DocsPageHeader.vue'
 import DocsCodeBlock from '../components/docs/DocsCodeBlock.vue'
 import DocsFormReference from '../components/docs/DocsFormReference.vue'
-import AppAlert from '../components/ui/AppAlert.vue'
 import AppButton from '../components/ui/AppButton.vue'
-import AppCard from '../components/ui/AppCard.vue'
-import AppCheckbox from '../components/ui/AppCheckbox.vue'
 import AppField from '../components/ui/AppField.vue'
 import AppInput from '../components/ui/AppInput.vue'
-import AppRadioGroup from '../components/ui/AppRadioGroup.vue'
 import AppSelect from '../components/ui/AppSelect.vue'
-import AppSwitch from '../components/ui/AppSwitch.vue'
 import AppTextarea from '../components/ui/AppTextarea.vue'
-import { formExamples } from '../docs/formExamples'
-
-const email = ref('')
-const role = ref('')
-const notes = ref('')
-const accepted = ref(true)
-const notifications = ref(false)
-const access = ref('editor')
-
-const roleOptions = [
-  { label: 'Administrador', value: 'admin' },
-  { label: 'Editor', value: 'editor' },
-  { label: 'Consulta', value: 'viewer' },
-]
-const accessOptions = [
-  { label: 'Administrador', value: 'admin', description: 'Acceso completo al proyecto.' },
-  { label: 'Editor', value: 'editor', description: 'Puede crear y modificar contenido.' },
-  { label: 'Consulta', value: 'viewer', description: 'Puede revisar contenido sin editar.' },
-]
-
-const demoName = ref('')
-const demoEmail = ref('')
-const demoRole = ref('')
-const demoNotes = ref('')
-const demoTerms = ref(false)
+import AppCheckbox from '../components/ui/AppCheckbox.vue'
+import AppRadioGroup from '../components/ui/AppRadioGroup.vue'
+import AppSwitch from '../components/ui/AppSwitch.vue'
+const sizes = ['sm', 'md', 'lg'] as const
+const types = [
+ { type: 'text', label: 'Texto', placeholder: 'Nombre completo' },
+ { type: 'email', label: 'Correo electrónico', placeholder: 'nombre@empresa.com' },
+ { type: 'password', label: 'Contraseña', placeholder: 'Al menos 8 caracteres' },
+ { type: 'number', label: 'Número', placeholder: 'Cantidad' },
+ { type: 'search', label: 'Búsqueda', placeholder: 'Buscar productos…' },
+ { type: 'tel', label: 'Teléfono', placeholder: '+51 999 123 456' },
+ { type: 'url', label: 'Dirección web', placeholder: 'https://ejemplo.com' },
+] as const
+const roleOptions = [{ value: 'admin', label: 'Administrador' }, { value: 'editor', label: 'Editor' }, { value: 'viewer', label: 'Consulta' }]
+const selectDemo = ref('')
+const notesDemo = ref('')
+const checks = reactive({ sm: false, md: true, lg: false })
+const switches = reactive({ sm: false, md: true, lg: false })
+const radios = reactive({ sm: '', md: 'editor', lg: '' })
+const initial = () => ({ text: '', email: '', password: '', number: '' as string | number, search: '', tel: '', url: '', role: '', notes: '', access: '', terms: false, notifications: false })
+const form = reactive(initial())
 const submitted = ref(false)
-const demoNameError = computed(() => submitted.value && demoName.value.trim().length < 3 ? 'Escribe al menos 3 caracteres.' : undefined)
-const demoEmailError = computed(() => submitted.value && !/^\S+@\S+\.\S+$/.test(demoEmail.value) ? 'Escribe un correo válido.' : undefined)
-const demoRoleError = computed(() => submitted.value && !demoRole.value ? 'Selecciona un rol.' : undefined)
-const demoTermsError = computed(() => submitted.value && !demoTerms.value ? 'Debes aceptar las condiciones.' : undefined)
-const demoValid = computed(() => submitted.value && !demoNameError.value && !demoEmailError.value && !demoRoleError.value && !demoTermsError.value)
-
-function resetDemo() {
-  demoName.value = ''
-  demoEmail.value = ''
-  demoRole.value = ''
-  demoNotes.value = ''
-  demoTerms.value = false
-  submitted.value = false
+const saved = ref(false)
+const formElement = ref<HTMLFormElement>()
+const errors = computed<Record<string, string>>(() => {
+ const result: Record<string, string> = {}
+ if (form.text.trim().length < 3) result.text = 'Escribe al menos 3 caracteres.'
+ if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) result.email = 'Escribe un correo válido.'
+ if (form.password.length < 8) result.password = 'Usa al menos 8 caracteres.'
+ if (form.number === '' || !Number.isInteger(Number(form.number)) || Number(form.number) < 1 || Number(form.number) > 100) result.number = 'Ingresa una cantidad entera entre 1 y 100.'
+ if (form.search.trim().length > 0 && form.search.trim().length < 2) result.search = 'Escribe al menos 2 caracteres para buscar.'
+ if (!/^\+?[\d\s()-]{7,20}$/.test(form.tel) || form.tel.replace(/\D/g, '').length < 7) result.tel = 'Ingresa un teléfono válido (mínimo 7 dígitos).'
+ if (form.url) { try { const url = new URL(form.url); if (!['http:', 'https:'].includes(url.protocol)) result.url = 'Usa una dirección http:// o https://.' } catch { result.url = 'Escribe una URL completa, por ejemplo https://ejemplo.com.' } }
+ if (!form.role) result.role = 'Selecciona un rol.'
+ if (form.notes.trim().length < 10) result.notes = 'Escribe una descripción de al menos 10 caracteres.'
+ if (!form.access) result.access = 'Selecciona un nivel de acceso.'
+ if (!form.terms) result.terms = 'Debes aceptar las condiciones de la demostración.'
+ return result
+})
+function inputCode(type: string) { return `<AppInput v-model="value" type="${type}" size="md" />` }
+function error(key: string) { return submitted.value ? errors.value[key] : undefined }
+watch(form, () => { saved.value = false })
+async function submit() {
+ submitted.value = true
+ saved.value = Object.keys(errors.value).length === 0
+ if (!saved.value) { await nextTick(); const invalid = formElement.value?.querySelector<HTMLElement>('[aria-invalid="true"]'); if (invalid?.matches('fieldset')) invalid.querySelector<HTMLInputElement>('input')?.focus(); else invalid?.focus() }
 }
+function reset() { Object.assign(form, initial()); submitted.value = false; saved.value = false }
+const validationCode = `<AppField label="Correo" for-id="email" :error="error" v-slot="{ invalid, describedBy }">\n  <AppInput id="email" v-model="email" type="email"\n    :invalid="invalid" :aria-describedby="describedBy" />\n</AppField>`
 </script>
-
 <template>
-  <DocsPageHeader eyebrow="Componentes / Formularios" title="Formularios"
-    description="Controles para capturar, validar y describir datos con v-model y asociaciones accesibles." />
-
-  <section class="component-section">
-    <div class="section-heading">
-      <div><span>01</span><h2>Campos básicos</h2></div>
-      <p>Input, select y textarea con etiquetas, ayuda y errores.</p>
-    </div>
-    <div class="showcase-panel form-showcase">
-      <AppField label="Correo electrónico" for-id="email" help="Lo usaremos para las notificaciones del sistema." required
-        v-slot="{ describedBy }">
-        <AppInput id="email" v-model="email" type="email" placeholder="nombre@empresa.com" required
-          :aria-describedby="describedBy" />
-      </AppField>
-      <AppField label="Rol del usuario" for-id="role">
-        <AppSelect id="role" v-model="role" :options="roleOptions" placeholder="Selecciona un rol" />
-      </AppField>
-      <AppField label="Descripción" for-id="notes"
-        :error="notes.length > 0 && notes.length < 10 ? 'Escribe al menos 10 caracteres.' : undefined"
-        v-slot="{ describedBy, invalid }">
-        <AppTextarea id="notes" v-model="notes" placeholder="Añade una descripción breve"
-          :invalid="invalid" :aria-describedby="describedBy" />
-      </AppField>
-      <AppField label="Campo deshabilitado" for-id="disabled-field">
-        <AppInput id="disabled-field" model-value="No se puede editar" disabled />
-      </AppField>
-    </div>
-    <DocsCodeBlock :code="formExamples.basic" />
-  </section>
-
-  <section class="component-section">
-    <div class="section-heading">
-      <div><span>02</span><h2>Tamaños y estados</h2></div>
-      <p>Alturas consistentes, solo lectura, bloqueo y error.</p>
-    </div>
-    <div class="showcase-panel input-sizes">
-      <AppField label="Small" for-id="input-sm"><AppInput id="input-sm" size="sm" placeholder="Input pequeño" /></AppField>
-      <AppField label="Medium" for-id="input-md"><AppInput id="input-md" size="md" placeholder="Input mediano" /></AppField>
-      <AppField label="Large" for-id="input-lg"><AppInput id="input-lg" size="lg" placeholder="Input grande" /></AppField>
-      <AppField label="Solo lectura" for-id="input-readonly"><AppInput id="input-readonly" model-value="Se puede seleccionar" readonly /></AppField>
-      <AppField label="Deshabilitado" for-id="input-disabled"><AppInput id="input-disabled" model-value="No se puede editar" disabled /></AppField>
-      <AppField label="Con error" for-id="input-error" error="Corrige este valor." v-slot="{ describedBy, invalid }">
-        <AppInput id="input-error" model-value="Valor incorrecto" :invalid="invalid" :aria-describedby="describedBy" />
-      </AppField>
-    </div>
-    <DocsCodeBlock :code="formExamples.sizes" />
-  </section>
-
-  <section class="component-section">
-    <div class="section-heading">
-      <div><span>03</span><h2>Selección binaria</h2></div>
-      <p>Checkbox y switch con etiqueta programática.</p>
-    </div>
-    <div class="showcase-panel choice-grid">
-      <AppCheckbox id="terms" v-model="accepted" label="Acepto las condiciones" />
-      <AppSwitch id="notifications" v-model="notifications" label="Recibir notificaciones" />
-      <AppCheckbox label="Opción deshabilitada" disabled />
-      <AppSwitch label="Switch deshabilitado" disabled />
-    </div>
-    <DocsCodeBlock :code="formExamples.selection" />
-  </section>
-
-  <section class="component-section">
-    <div class="section-heading">
-      <div><span>04</span><h2>Radio buttons</h2></div>
-      <p>Selección exclusiva con título y descripción por opción.</p>
-    </div>
-    <div class="showcase-panel">
-      <AppRadioGroup v-model="access" legend="Nivel de acceso" name="access-level"
-        :options="accessOptions" orientation="horizontal" />
-    </div>
-    <DocsCodeBlock :code="formExamples.radio" />
-  </section>
-
-  <section class="component-section">
-    <div class="section-heading">
-      <div><span>05</span><h2>Formulario interactivo</h2></div>
-      <p>Envío, validación, mensajes asociados y restablecimiento.</p>
-    </div>
-    <AppCard title="Crear usuario" subtitle="Completa los campos obligatorios" :icon="ClipboardCheck">
-      <form class="docs-form-demo" novalidate @submit.prevent="submitted = true">
-        <div class="form-showcase">
-          <AppField label="Nombre" for-id="demo-name" :error="demoNameError" required
-            v-slot="{ describedBy, invalid }">
-            <AppInput id="demo-name" v-model="demoName" required placeholder="Nombre del usuario"
-              :invalid="invalid" :aria-describedby="describedBy" />
-          </AppField>
-          <AppField label="Correo" for-id="demo-email" :error="demoEmailError" required
-            v-slot="{ describedBy, invalid }">
-            <AppInput id="demo-email" v-model="demoEmail" type="email" required placeholder="nombre@empresa.com"
-              :invalid="invalid" :aria-describedby="describedBy" />
-          </AppField>
-          <AppField label="Rol" for-id="demo-role" :error="demoRoleError" required
-            v-slot="{ describedBy, invalid }">
-            <AppSelect id="demo-role" v-model="demoRole" :options="roleOptions" placeholder="Selecciona un rol"
-              required :invalid="invalid" :aria-describedby="describedBy" />
-          </AppField>
-          <AppField label="Notas" for-id="demo-notes" help="Campo opcional." v-slot="{ describedBy }">
-            <AppTextarea id="demo-notes" v-model="demoNotes" placeholder="Información adicional"
-              :aria-describedby="describedBy" />
-          </AppField>
-        </div>
-        <div>
-          <AppCheckbox id="demo-terms" v-model="demoTerms" label="Acepto las condiciones"
-            :invalid="Boolean(demoTermsError)" :described-by="demoTermsError ? 'demo-terms-error' : undefined" />
-          <p v-if="demoTermsError" id="demo-terms-error" class="app-field__message app-field__message--error">{{ demoTermsError }}</p>
-        </div>
-        <AppAlert v-if="submitted" :status="demoValid ? 'success' : 'danger'" role="status"
-          :title="demoValid ? 'Formulario válido' : 'Revisa los campos'">
-          {{ demoValid ? 'Los datos están listos para enviarse.' : 'Corrige los errores indicados antes de continuar.' }}
-        </AppAlert>
-        <div class="component-row">
-          <AppButton type="submit">Validar formulario</AppButton>
-          <AppButton type="button" variant="outline" @click="resetDemo">Restablecer</AppButton>
-        </div>
-      </form>
-    </AppCard>
-    <DocsCodeBlock :code="formExamples.validation" />
-  </section>
-
-  <DocsFormReference />
+ <DocsPageHeader eyebrow="Formularios / Controles base" title="Controles base" description="Cada control con sus tamaños y estados. Al final encontrarás las reglas de validación y un formulario completo para probarlas." />
+ <section v-for="(input, index) in types" :key="input.type" class="component-section">
+  <div class="section-heading"><div><span>0{{ index + 1 }}</span><h2>{{ input.label }}</h2></div><p>Tipo {{ input.type }} · pequeño, mediano y grande.</p></div>
+  <div class="showcase-panel space-y-6">
+   <div class="grid grid-cols-1 md:grid-cols-3 gap-6"><AppField v-for="size in sizes" :key="size" :label="`Tamaño ${size}`" :for-id="`${input.type}-${size}`"><AppInput :id="`${input.type}-${size}`" :type="input.type" :size="size" :placeholder="input.placeholder" /></AppField></div>
+   <div class="grid grid-cols-1 md:grid-cols-3 gap-6"><AppField label="Solo lectura" :for-id="`${input.type}-readonly`"><AppInput :id="`${input.type}-readonly`" :type="input.type" :model-value="input.type === 'number' ? 25 : 'Ejemplo'" readonly /></AppField><AppField label="Deshabilitado" :for-id="`${input.type}-disabled`"><AppInput :id="`${input.type}-disabled`" :type="input.type" :placeholder="input.placeholder" disabled /></AppField><AppField label="Con error" :for-id="`${input.type}-invalid`" error="Revisa el valor ingresado." v-slot="{ invalid, describedBy }"><AppInput :id="`${input.type}-invalid`" :type="input.type" :placeholder="input.placeholder" :invalid="invalid" :aria-describedby="describedBy" /></AppField></div>
+  </div><DocsCodeBlock :code="inputCode(input.type)" />
+ </section>
+ <section class="component-section"><div class="section-heading"><div><span>08</span><h2>Select</h2></div><p>Selección única con placeholder y opciones.</p></div><div class="showcase-panel grid grid-cols-1 md:grid-cols-3 gap-6"><AppField v-for="size in sizes" :key="size" :label="`Tamaño ${size}`" :for-id="`select-${size}`"><AppSelect :id="`select-${size}`" v-model="selectDemo" :size="size" :options="roleOptions" placeholder="Selecciona un rol" /></AppField><AppField label="Deshabilitado" for-id="select-disabled"><AppSelect id="select-disabled" :options="roleOptions" model-value="editor" disabled /></AppField><AppField label="Con error" for-id="select-invalid" error="Selecciona una opción." v-slot="{ invalid, describedBy }"><AppSelect id="select-invalid" :options="roleOptions" placeholder="Selecciona" :invalid="invalid" :aria-describedby="describedBy" /></AppField><AppField label="Opción deshabilitada" for-id="select-option"><AppSelect id="select-option" :options="[...roleOptions, { label: 'Próximamente', value: 'future', disabled: true }]" placeholder="Selecciona" /></AppField></div><DocsCodeBlock code='<AppSelect v-model="role" :options="options" size="md" placeholder="Selecciona" />' /></section>
+ <section class="component-section"><div class="section-heading"><div><span>09</span><h2>Textarea</h2></div><p>Texto multilínea con altura y tamaño configurables.</p></div><div class="showcase-panel grid grid-cols-1 md:grid-cols-3 gap-6"><AppField v-for="size in sizes" :key="size" :label="`Tamaño ${size}`" :for-id="`textarea-${size}`"><AppTextarea :id="`textarea-${size}`" v-model="notesDemo" :size="size" :rows="3" placeholder="Escribe una descripción" /></AppField><AppField label="Solo lectura" for-id="textarea-readonly"><AppTextarea id="textarea-readonly" model-value="Contenido de referencia" readonly /></AppField><AppField label="Deshabilitado" for-id="textarea-disabled"><AppTextarea id="textarea-disabled" disabled placeholder="No disponible" /></AppField><AppField label="Con error" for-id="textarea-invalid" error="Completa la descripción." v-slot="{ invalid, describedBy }"><AppTextarea id="textarea-invalid" :invalid="invalid" :aria-describedby="describedBy" /></AppField></div><DocsCodeBlock code='<AppTextarea v-model="notes" :rows="4" size="md" />' /></section>
+ <section class="component-section"><div class="section-heading"><div><span>10</span><h2>Checkbox</h2></div><p>Selección independiente con estados marcado, deshabilitado y error.</p></div><div class="showcase-panel grid grid-cols-1 md:grid-cols-3 gap-6"><AppCheckbox v-for="size in sizes" :key="size" v-model="checks[size]" :size="size" :label="`Tamaño ${size}`" /><AppCheckbox label="Deshabilitado" disabled /><AppCheckbox label="Marcado y deshabilitado" :model-value="true" disabled /><div><AppCheckbox label="Aceptación requerida" invalid described-by="checkbox-error" /><p id="checkbox-error" class="app-field__message--error">Debes aceptar para continuar.</p></div></div><DocsCodeBlock code='<AppCheckbox v-model="accepted" label="Acepto las condiciones" size="md" />' /></section>
+ <section class="component-section"><div class="section-heading"><div><span>11</span><h2>Radio group</h2></div><p>Selección exclusiva en disposición vertical u horizontal.</p></div><div class="showcase-panel grid grid-cols-1 md:grid-cols-3 gap-6"><AppRadioGroup v-for="size in sizes" :key="size" v-model="radios[size]" :size="size" :legend="`Tamaño ${size}`" :options="roleOptions" /><AppRadioGroup legend="Horizontal" orientation="horizontal" :options="roleOptions" /><AppRadioGroup legend="Deshabilitado" model-value="editor" :options="roleOptions" disabled /><div><AppRadioGroup legend="Con error" :options="roleOptions" invalid described-by="radio-error" /><p id="radio-error" class="app-field__message--error">Selecciona un rol.</p></div></div><DocsCodeBlock code='<AppRadioGroup v-model="role" legend="Rol" :options="options" orientation="horizontal" />' /></section>
+ <section class="component-section"><div class="section-heading"><div><span>12</span><h2>Switch</h2></div><p>Activación inmediata de preferencias.</p></div><div class="showcase-panel grid grid-cols-1 md:grid-cols-3 gap-6"><AppSwitch v-for="size in sizes" :key="size" v-model="switches[size]" :size="size" :label="`Tamaño ${size}`" /><AppSwitch label="Deshabilitado" disabled /><AppSwitch label="Activo y deshabilitado" :model-value="true" disabled /><AppSwitch label="Estado inválido" invalid /></div><DocsCodeBlock code='<AppSwitch v-model="notifications" label="Recibir notificaciones" size="md" />' /></section>
+ <DocsFormReference />
+ <section class="component-section"><div class="section-heading"><div><span>13</span><h2>Validación</h2></div><p>Etiqueta, mensaje asociado y estado inválido trabajan juntos.</p></div><div class="showcase-panel grid grid-cols-1 md:grid-cols-3 gap-6"><AppField label="Antes de enviar" for-id="validation-help" help="Usa tu correo de trabajo." v-slot="{ describedBy }"><AppInput id="validation-help" placeholder="nombre@empresa.com" :aria-describedby="describedBy" /></AppField><AppField label="Con error" for-id="validation-error" error="El correo no es válido." v-slot="{ invalid, describedBy }"><AppInput id="validation-error" model-value="correo-incompleto" :invalid="invalid" :aria-describedby="describedBy" /></AppField><AppField label="Corregido" for-id="validation-ok" help="Formato de correo válido." v-slot="{ describedBy }"><AppInput id="validation-ok" model-value="ana@empresa.com" :aria-describedby="describedBy" /></AppField></div><DocsCodeBlock :code="validationCode" /></section>
+ <section class="component-section"><div class="section-heading"><div><span>14</span><h2>Formulario interactivo</h2></div><p>Envía vacío para ver los errores. Esta demo no envía ni guarda datos en un servidor.</p></div><form ref="formElement" class="showcase-panel space-y-6" novalidate @submit.prevent="submit" @reset.prevent="reset"><div v-if="submitted && Object.keys(errors).length" class="form-demo-error" role="alert">Hay {{ Object.keys(errors).length }} campos por corregir. Revisa los mensajes junto a cada control.</div><div v-if="saved" class="form-demo-success" role="status">Validación correcta. El formulario está listo para enviarse.</div><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><AppField v-for="input in types" :key="input.type" :label="input.label" :for-id="`demo-${input.type}`" :required="!['search', 'url'].includes(input.type)" :error="error(input.type)" :help="input.type === 'search' || input.type === 'url' ? 'Opcional.' : input.type === 'number' ? 'Cantidad entre 1 y 100.' : undefined" v-slot="{ invalid, describedBy }"><AppInput size="sm" :id="`demo-${input.type}`" v-model="form[input.type]" :type="input.type" :placeholder="input.placeholder" :invalid="invalid" :aria-describedby="describedBy" :required="!['search', 'url'].includes(input.type)" /></AppField><AppField label="Rol" for-id="demo-role" required :error="error('role')" v-slot="{ invalid, describedBy }"><AppSelect size="sm" id="demo-role" v-model="form.role" :options="roleOptions" placeholder="Selecciona un rol" required :invalid="invalid" :aria-describedby="describedBy" /></AppField><AppField class="md:col-span-2" label="Descripción" for-id="demo-notes" required :error="error('notes')" v-slot="{ invalid, describedBy }"><AppTextarea size="sm" id="demo-notes" v-model="form.notes" required :invalid="invalid" :aria-describedby="describedBy" placeholder="Escribe al menos 10 caracteres" /></AppField><div><AppRadioGroup size="sm" v-model="form.access" legend="Nivel de acceso (obligatorio)" :options="roleOptions" :invalid="Boolean(error('access'))" :described-by="error('access') ? 'demo-access-error' : undefined" /><p v-if="error('access')" id="demo-access-error" class="app-field__message--error">{{ error('access') }}</p></div><AppSwitch size="sm" v-model="form.notifications" label="Recibir notificaciones (opcional)" /></div><div><AppCheckbox size="sm" v-model="form.terms" label="Acepto las condiciones de esta demostración" :invalid="Boolean(error('terms'))" :described-by="error('terms') ? 'demo-terms-error' : undefined" /><p v-if="error('terms')" id="demo-terms-error" class="app-field__message--error">{{ error('terms') }}</p></div><div class="flex flex-wrap gap-3"><AppButton type="submit">Validar formulario</AppButton><AppButton type="reset" variant="outline" color="neutral">Limpiar</AppButton></div></form></section>
 </template>

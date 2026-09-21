@@ -1,5 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import DocsLayout from '../layouts/DocsLayout.vue'
+import NotFoundView from '../views/NotFoundView.vue'
+import HttpStatusView from '../views/HttpStatusView.vue'
+import RouteErrorView from '../views/RouteErrorView.vue'
+import { findNavigationItem } from '../config/navigation'
+import { httpPages } from '../config/httpPages'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,6 +15,20 @@ const router = createRouter({
       component: DocsLayout,
       redirect: '/dashboard',
       children: [
+        { path: 'http-pages', name: 'http-pages', component: () => import('../views/HttpPagesView.vue') },
+        ...httpPages.map((page) => ({
+          path: 'http/' + page.code,
+          name: 'http-' + page.code,
+          component: HttpStatusView,
+          props: { code: page.code },
+          meta: { title: page.title },
+        })),
+        { path: 'grid', name: 'grid', component: () => import('../views/GridView.vue') },
+        { path: 'utilities', name: 'utilities', component: () => import('../views/UtilitiesView.vue') },
+        { path: 'states', name: 'states', component: () => import('../views/StatesView.vue') },
+        { path: 'drawer', name: 'drawer', component: () => import('../views/DrawerView.vue') },
+        { path: 'charts', name: 'charts', component: () => import('../views/ChartsView.vue') },
+        { path: 'editor', name: 'editor', component: () => import('../views/EditorView.vue') },
         {
           path: 'dashboard',
           name: 'dashboard',
@@ -64,7 +83,8 @@ const router = createRouter({
           path: 'accordion',
           name: 'accordion',
           component: () => import('../views/AccordionView.vue'),
-        },        {
+        },
+        {
           path: 'breadcrumbs',
           name: 'breadcrumbs',
           component: () => import('../views/BreadcrumbsView.vue'),
@@ -113,7 +133,8 @@ const router = createRouter({
           path: 'spinners',
           name: 'spinners',
           component: () => import('../views/SpinnersView.vue'),
-        },        {
+        },
+        {
           path: 'skeleton',
           name: 'skeleton',
           component: () => import('../views/SkeletonView.vue'),
@@ -139,8 +160,13 @@ const router = createRouter({
           component: () => import('../views/InputMaskView.vue'),
         },
         {
-          path: 'select2',
-          name: 'select2',
+          path: 'input-groups',
+          name: 'input-groups',
+          component: () => import('../views/InputGroupsView.vue'),
+        },
+        {
+          path: 'advanced-select',
+          name: 'advanced-select',
           component: () => import('../views/AdvancedSelectView.vue'),
         },
         {
@@ -148,14 +174,27 @@ const router = createRouter({
           name: 'file-upload',
           component: () => import('../views/FileUploadView.vue'),
         },
+        { path: 'select2', redirect: { name: 'advanced-select' } },
         {
           path: 'sweetalert2',
           name: 'sweetalert2',
           component: () => import('../views/SweetAlertView.vue'),
         },
+        { path: 'error', name: 'route-error', component: RouteErrorView },
+        { path: ':pathMatch(.*)*', name: 'not-found', component: NotFoundView },
       ],
     },
   ],
+})
+
+router.afterEach((to) => {
+  const item = findNavigationItem(to.name)
+  const specialTitle = to.name === 'not-found' ? 'Página no encontrada' : to.name === 'route-error' ? 'Error de carga' : undefined
+  document.title = `${to.meta.title ?? specialTitle ?? item?.label ?? 'App UI'} · App UI`
+})
+
+router.onError(() => {
+  if (router.currentRoute.value.name !== 'route-error') void router.replace({ name: 'route-error' })
 })
 
 export default router

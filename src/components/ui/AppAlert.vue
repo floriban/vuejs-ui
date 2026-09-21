@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { Info, CircleCheck, CircleX, TriangleAlert, X } from '@lucide/vue'
-import { computed, ref } from 'vue'
+import { computed, ref, useAttrs } from 'vue'
+
+defineOptions({ inheritAttrs: false })
+const attrs = useAttrs()
 
 const props = withDefaults(
   defineProps<{
@@ -13,6 +16,7 @@ const props = withDefaults(
 )
 
 const visible = ref(true)
+const liveRole = computed(() => typeof attrs.role === 'string' ? attrs.role : props.status === 'danger' || props.status === 'error' ? 'alert' : 'status')
 
 const indicatorIcon = computed(() => {
   const icons = {
@@ -28,7 +32,7 @@ const indicatorIcon = computed(() => {
 </script>
 
 <template>
-  <div v-if="visible" class="app-alert" :class="[`app-alert--${status}`, `app-alert--${variant}`]" role="alert">
+  <div v-if="visible" v-bind="attrs" class="app-alert" :class="[`app-alert--${status}`, `app-alert--${variant}`]" :role="liveRole">
     <span class="app-alert__indicator" aria-hidden="true">
       <component :is="indicatorIcon" :size="22" :stroke-width="2" />
     </span>

@@ -106,7 +106,7 @@
 }
 
 .app-button--solid {
-  color: var(--color-white);
+  color: #ffffff;
   background: var(--button-solid);
 }
 
@@ -134,7 +134,7 @@
 }
 
 .app-button--soft:hover:not(:disabled) {
-  color: var(--color-white);
+  color: #ffffff;
   background: var(--button-solid);
 }
 

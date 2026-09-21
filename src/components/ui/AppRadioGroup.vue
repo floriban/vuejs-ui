@@ -10,6 +10,7 @@ export interface RadioOption {
 
 const props = withDefaults(
   defineProps<{
+    size?: 'sm' | 'md' | 'lg'
     legend?: string
     name?: string
     options: RadioOption[]
@@ -27,7 +28,7 @@ const generatedName = useId()
 
 <template>
   <fieldset
-    class="app-radio-fieldset"
+    class="app-radio-fieldset" :class="`app-choice-size--${size ?? 'md'}`"
     :disabled="disabled"
     :aria-describedby="describedBy"
     :aria-invalid="invalid || undefined"

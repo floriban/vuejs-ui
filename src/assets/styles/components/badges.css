@@ -48,7 +48,7 @@
 .app-badge--solid {
   border-color: var(--badge-color);
   background: var(--badge-color);
-  color: var(--color-white);
+  color: #ffffff;
 }
 
 .app-badge--outline {

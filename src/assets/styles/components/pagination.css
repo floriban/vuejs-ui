@@ -34,7 +34,7 @@
 .app-pagination__button--active {
   border-color: var(--color-primary);
   background: var(--color-primary);
-  color: var(--color-white);
+  color: #ffffff;
 }
 
 .app-pagination__button:disabled {

@@ -73,6 +73,6 @@ onBeforeUnmount(() => picker?.destroy())
 <template>
   <span class="app-input-affix app-flatpickr">
     <Clock3 :size="18" aria-hidden="true" />
-    <input ref="inputRef" class="app-control app-control--with-icon" :class="`app-control--${size}`" :id="id ? `${id}-value` : undefined" type="text" :disabled="disabled" :required="required" :aria-invalid="invalid || undefined" />
+    <input ref="inputRef" class="app-control app-control--with-icon" :class="`app-control--${size}`" :id="id" type="text" :disabled="disabled" :required="required" :aria-invalid="invalid || undefined" />
   </span>
 </template>

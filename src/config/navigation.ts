@@ -1,93 +1,134 @@
-import type { Component } from 'vue'
-import { Compass, Database, FormInput, LayoutDashboard, MessagesSquare, Shapes } from '@lucide/vue'
+import { httpPages } from "./httpPages";
+import type { Component } from "vue";
+import {
+  Compass,
+  Database,
+  FormInput,
+  LayoutDashboard,
+  MessagesSquare,
+  Shapes,
+  Boxes,
+  PanelsTopLeft,
+} from "@lucide/vue";
 
 export interface NavigationItem {
-  name: string
-  label: string
+  name: string;
+  label: string;
 }
 
 export interface NavigationGroup {
-  id: string
-  label: string
-  description: string
-  icon: Component
-  items: NavigationItem[]
+  id: string;
+  label: string;
+  description: string;
+  icon: Component;
+  items: NavigationItem[];
 }
 
-export const dashboardItem = { name: 'dashboard', label: 'Dashboard', icon: LayoutDashboard }
+export const dashboardItem = {
+  name: "dashboard",
+  label: "Dashboard",
+  icon: LayoutDashboard,
+};
 
 export const navigationGroups: NavigationGroup[] = [
   {
-    id: 'elements',
-    label: 'Elementos visuales',
-    description: 'Piezas de presentación, identidad y contenido.',
+    id: "utilities",
+    label: "Utilidades",
+    description: "Distribución y estilos compartidos.",
     icon: Shapes,
     items: [
-      { name: 'buttons', label: 'Botones' },
-      { name: 'cards', label: 'Tarjetas' },
-      { name: 'badges', label: 'Badges' },
-      { name: 'avatars', label: 'Avatares' },
-      { name: 'timeline', label: 'Timeline' },
+      { name: "grid", label: "Distribuciones" },
+      { name: "utilities", label: "Tipografía y utilidades" },
+      { name: "states", label: "Estados de contenido" },
     ],
   },
   {
-    id: 'forms',
-    label: 'Formularios',
-    description: 'Controles para capturar, buscar y seleccionar datos.',
+    id: "elements",
+    label: "Elementos visuales",
+    description: "Piezas de presentación, identidad y contenido.",
+    icon: Boxes,
+    items: [
+      { name: "buttons", label: "Botones" },
+      { name: "cards", label: "Tarjetas" },
+      { name: "badges", label: "Badges" },
+      { name: "avatars", label: "Avatares" },
+      { name: "timeline", label: "Timeline" },
+    ],
+  },
+  {
+    id: "forms",
+    label: "Formularios",
+    description: "Controles para capturar, buscar y seleccionar datos.",
     icon: FormInput,
     items: [
-      { name: 'forms', label: 'Controles base' },
-      { name: 'datepicker', label: 'DatePicker' },
-      { name: 'timepicker', label: 'TimePicker' },
-      { name: 'autocomplete', label: 'Autocomplete' },
-      { name: 'input-mask', label: 'Input Mask' },
-      { name: 'select2', label: 'Select2' },
-      { name: 'file-upload', label: 'File Upload' },
+      { name: "forms", label: "Controles base" },
+      { name: "editor", label: "Editor de texto" },
+      { name: "datepicker", label: "DatePicker" },
+      { name: "timepicker", label: "TimePicker" },
+      { name: "autocomplete", label: "Autocomplete" },
+      { name: "input-mask", label: "Input Mask" },
+      { name: "input-groups", label: "Input Group" },
+      { name: "advanced-select", label: "Select avanzado" },
+      { name: "file-upload", label: "File Upload" },
     ],
   },
   {
-    id: 'data',
-    label: 'Datos',
-    description: 'Presentación y recorrido de colecciones de información.',
+    id: "data",
+    label: "Datos",
+    description: "Presentación y recorrido de colecciones de información.",
     icon: Database,
     items: [
-      { name: 'tables', label: 'Tablas' },
-      { name: 'pagination', label: 'Pagination' },
+      { name: "tables", label: "Tablas" },
+      { name: "charts", label: "Gráficos" },
+      { name: "pagination", label: "Pagination" },
     ],
   },
   {
-    id: 'navigation',
-    label: 'Navegación',
-    description: 'Patrones para cambiar de contexto y organizar contenido.',
+    id: "navigation",
+    label: "Navegación",
+    description: "Patrones para cambiar de contexto y organizar contenido.",
     icon: Compass,
     items: [
-      { name: 'dropdowns', label: 'Dropdowns' },
-      { name: 'tabs', label: 'Tabs' },
-      { name: 'accordion', label: 'Accordion' },
-      { name: 'breadcrumbs', label: 'Breadcrumbs' },
-      { name: 'stepper', label: 'Stepper' },
+      { name: "dropdowns", label: "Dropdowns" },
+      { name: "tabs", label: "Tabs" },
+      { name: "accordion", label: "Accordion" },
+      { name: "breadcrumbs", label: "Breadcrumbs" },
+      { name: "stepper", label: "Stepper" },
     ],
   },
   {
-    id: 'feedback',
-    label: 'Feedback y capas',
-    description: 'Estados, mensajes y contenido temporal superpuesto.',
+    id: "http-pages",
+    label: "Páginas HTTP",
+    description: "Situaciones de acceso, conexión y disponibilidad.",
+    icon: PanelsTopLeft,
+    items: httpPages.map((page) => ({
+      name: "http-" + page.code,
+      label: page.code + " · " + page.label,
+    })),
+  },
+  {
+    id: "feedback",
+    label: "Feedback y capas",
+    description: "Estados, mensajes y contenido temporal superpuesto.",
     icon: MessagesSquare,
     items: [
-      { name: 'alerts', label: 'Alertas' },
-      { name: 'modals', label: 'Modales' },
-      { name: 'toasts', label: 'Notificaciones' },
-      { name: 'progress', label: 'Progress' },
-      { name: 'spinners', label: 'Spinners' },
-      { name: 'skeleton', label: 'Skeleton' },
-      { name: 'tooltips', label: 'Tooltips' },
-      { name: 'popovers', label: 'Popovers' },
-      { name: 'sweetalert2', label: 'SweetAlert2' },
+      { name: "alerts", label: "Alertas" },
+      { name: "modals", label: "Modales" },
+      { name: "drawer", label: "Drawer" },
+      { name: "toasts", label: "Notificaciones" },
+      { name: "progress", label: "Progress" },
+      { name: "spinners", label: "Spinners" },
+      { name: "skeleton", label: "Skeleton" },
+      { name: "tooltips", label: "Tooltips" },
+      { name: "popovers", label: "Popovers" },
+      { name: "sweetalert2", label: "SweetAlert2" },
     ],
   },
-]
+];
 
 export function findNavigationItem(name: unknown) {
-  if (name === dashboardItem.name) return dashboardItem
-  return navigationGroups.flatMap((group) => group.items).find((item) => item.name === name)
+  if (name === dashboardItem.name) return dashboardItem;
+  return navigationGroups
+    .flatMap((group) => group.items)
+    .find((item) => item.name === name);
 }
