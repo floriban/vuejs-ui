@@ -1,0 +1,7 @@
+*, *::before, *::after { box-sizing: border-box; }
+html { font-family: Poppins, Helvetica, sans-serif; background: var(--color-page); }
+body { min-width: 320px; min-height: 100vh; margin: 0; background: var(--color-page); color: var(--color-gray-800); }
+button, input, select, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: var(--color-primary); }
+#app { min-height: 100vh; }

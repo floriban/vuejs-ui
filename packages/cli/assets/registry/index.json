@@ -1,0 +1,995 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "name": "accordion",
+      "type": "component",
+      "description": "Instala AppAccordion.",
+      "files": [
+        {
+          "source": "src/components/ui/AppAccordion.vue",
+          "target": "src/components/ui/AppAccordion.vue"
+        },
+        {
+          "source": "src/types/accordion.ts",
+          "target": "src/types/accordion.ts"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "accordions.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "advanced-select",
+      "type": "component",
+      "description": "Instala AppAdvancedSelect.",
+      "files": [
+        {
+          "source": "src/components/ui/AppAdvancedSelect.vue",
+          "target": "src/components/ui/AppAdvancedSelect.vue"
+        },
+        {
+          "source": "src/composables/useFloatingPanel.ts",
+          "target": "src/composables/useFloatingPanel.ts"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "advanced-forms.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "alert",
+      "type": "component",
+      "description": "Instala AppAlert.",
+      "files": [
+        {
+          "source": "src/components/ui/AppAlert.vue",
+          "target": "src/components/ui/AppAlert.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "alerts.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "autocomplete",
+      "type": "component",
+      "description": "Instala AppAutocomplete.",
+      "files": [
+        {
+          "source": "src/components/ui/AppAutocomplete.vue",
+          "target": "src/components/ui/AppAutocomplete.vue"
+        },
+        {
+          "source": "src/composables/useFloatingPanel.ts",
+          "target": "src/composables/useFloatingPanel.ts"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "advanced-forms.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "avatar",
+      "type": "component",
+      "description": "Instala AppAvatar.",
+      "files": [
+        {
+          "source": "src/components/ui/AppAvatar.vue",
+          "target": "src/components/ui/AppAvatar.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {},
+      "styles": [
+        "avatars.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "avatar-group",
+      "type": "component",
+      "description": "Instala AppAvatarGroup.",
+      "files": [
+        {
+          "source": "src/components/ui/AppAvatarGroup.vue",
+          "target": "src/components/ui/AppAvatarGroup.vue"
+        }
+      ],
+      "registryDependencies": [
+        "avatar"
+      ],
+      "npmDependencies": {},
+      "styles": [
+        "avatars.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "badge",
+      "type": "component",
+      "description": "Instala AppBadge.",
+      "files": [
+        {
+          "source": "src/components/ui/AppBadge.vue",
+          "target": "src/components/ui/AppBadge.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "badges.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "breadcrumbs",
+      "type": "component",
+      "description": "Instala AppBreadcrumbs.",
+      "files": [
+        {
+          "source": "src/components/ui/AppBreadcrumbs.vue",
+          "target": "src/components/ui/AppBreadcrumbs.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "vue-router": "^5.2.0",
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "navigation-feedback.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "button",
+      "type": "component",
+      "description": "Instala AppButton.",
+      "files": [
+        {
+          "source": "src/components/ui/AppButton.vue",
+          "target": "src/components/ui/AppButton.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "buttons.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "button-group",
+      "type": "component",
+      "description": "Instala AppButtonGroup.",
+      "files": [
+        {
+          "source": "src/components/ui/AppButtonGroup.vue",
+          "target": "src/components/ui/AppButtonGroup.vue"
+        }
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "npmDependencies": {},
+      "styles": [
+        "buttons.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "card",
+      "type": "component",
+      "description": "Instala AppCard.",
+      "files": [
+        {
+          "source": "src/components/ui/AppCard.vue",
+          "target": "src/components/ui/AppCard.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "cards.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "chart",
+      "type": "component",
+      "description": "Instala AppChart.",
+      "files": [
+        {
+          "source": "src/components/ui/AppChart.vue",
+          "target": "src/components/ui/AppChart.vue"
+        },
+        {
+          "source": "src/composables/useTheme.ts",
+          "target": "src/composables/useTheme.ts"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "echarts": "^6.1.0",
+        "vue-echarts": "^8.3.0"
+      },
+      "styles": [
+        "editor-charts.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "checkbox",
+      "type": "component",
+      "description": "Instala AppCheckbox.",
+      "files": [
+        {
+          "source": "src/components/ui/AppCheckbox.vue",
+          "target": "src/components/ui/AppCheckbox.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {},
+      "styles": [
+        "forms.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "date-picker",
+      "type": "component",
+      "description": "Instala AppDatePicker.",
+      "files": [
+        {
+          "source": "src/components/ui/AppDatePicker.vue",
+          "target": "src/components/ui/AppDatePicker.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0",
+        "flatpickr": "^4.6.13"
+      },
+      "styles": [
+        "advanced-forms.css"
+      ],
+      "externalStyles": [
+        "flatpickr/dist/flatpickr.min.css"
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "component",
+      "description": "Instala AppDrawer.",
+      "files": [
+        {
+          "source": "src/components/ui/AppDrawer.vue",
+          "target": "src/components/ui/AppDrawer.vue"
+        },
+        {
+          "source": "src/composables/modalScrollLock.ts",
+          "target": "src/composables/modalScrollLock.ts"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "drawer-utilities.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "dropdown",
+      "type": "component",
+      "description": "Instala AppDropdown.",
+      "files": [
+        {
+          "source": "src/components/ui/AppDropdown.vue",
+          "target": "src/components/ui/AppDropdown.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "dropdowns.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "dropdown-item",
+      "type": "component",
+      "description": "Instala AppDropdownItem.",
+      "files": [
+        {
+          "source": "src/components/ui/AppDropdownItem.vue",
+          "target": "src/components/ui/AppDropdownItem.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "dropdowns.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "dropdown-separator",
+      "type": "component",
+      "description": "Instala AppDropdownSeparator.",
+      "files": [
+        {
+          "source": "src/components/ui/AppDropdownSeparator.vue",
+          "target": "src/components/ui/AppDropdownSeparator.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {},
+      "styles": [
+        "dropdowns.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "editor",
+      "type": "component",
+      "description": "Instala AppEditor.",
+      "files": [
+        {
+          "source": "src/components/ui/AppEditor.vue",
+          "target": "src/components/ui/AppEditor.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@tiptap/vue-3": "^3.31.3",
+        "@tiptap/starter-kit": "^3.31.3",
+        "@tiptap/extension-text-align": "^3.31.3",
+        "@tiptap/extension-placeholder": "^3.31.3",
+        "@tiptap/extension-table": "^3.31.3",
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "editor-charts.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "field",
+      "type": "component",
+      "description": "Instala AppField.",
+      "files": [
+        {
+          "source": "src/components/ui/AppField.vue",
+          "target": "src/components/ui/AppField.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {},
+      "styles": [
+        "forms.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "file-upload",
+      "type": "component",
+      "description": "Instala AppFileUpload.",
+      "files": [
+        {
+          "source": "src/components/ui/AppFileUpload.vue",
+          "target": "src/components/ui/AppFileUpload.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "file-upload.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "http-state",
+      "type": "component",
+      "description": "Instala AppHttpState.",
+      "files": [
+        {
+          "source": "src/components/ui/AppHttpState.vue",
+          "target": "src/components/ui/AppHttpState.vue"
+        },
+        {
+          "source": "src/config/httpPages.ts",
+          "target": "src/config/httpPages.ts"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [],
+      "externalStyles": []
+    },
+    {
+      "name": "input",
+      "type": "component",
+      "description": "Instala AppInput.",
+      "files": [
+        {
+          "source": "src/components/ui/AppInput.vue",
+          "target": "src/components/ui/AppInput.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {},
+      "styles": [
+        "forms.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "input-group",
+      "type": "component",
+      "description": "Instala AppInputGroup.",
+      "files": [
+        {
+          "source": "src/components/ui/AppInputGroup.vue",
+          "target": "src/components/ui/AppInputGroup.vue"
+        }
+      ],
+      "registryDependencies": [
+        "input",
+        "select",
+        "button"
+      ],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "input-groups.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "input-mask",
+      "type": "component",
+      "description": "Instala AppInputMask.",
+      "files": [
+        {
+          "source": "src/components/ui/AppInputMask.vue",
+          "target": "src/components/ui/AppInputMask.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {},
+      "styles": [
+        "advanced-forms.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "modal",
+      "type": "component",
+      "description": "Instala AppModal.",
+      "files": [
+        {
+          "source": "src/components/ui/AppModal.vue",
+          "target": "src/components/ui/AppModal.vue"
+        },
+        {
+          "source": "src/composables/modalScrollLock.ts",
+          "target": "src/composables/modalScrollLock.ts"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "modals.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "pagination",
+      "type": "component",
+      "description": "Instala AppPagination.",
+      "files": [
+        {
+          "source": "src/components/ui/AppPagination.vue",
+          "target": "src/components/ui/AppPagination.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "pagination.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "popover",
+      "type": "component",
+      "description": "Instala AppPopover.",
+      "files": [
+        {
+          "source": "src/components/ui/AppPopover.vue",
+          "target": "src/components/ui/AppPopover.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "popovers.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "progress",
+      "type": "component",
+      "description": "Instala AppProgress.",
+      "files": [
+        {
+          "source": "src/components/ui/AppProgress.vue",
+          "target": "src/components/ui/AppProgress.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {},
+      "styles": [
+        "progress.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "radio-group",
+      "type": "component",
+      "description": "Instala AppRadioGroup.",
+      "files": [
+        {
+          "source": "src/components/ui/AppRadioGroup.vue",
+          "target": "src/components/ui/AppRadioGroup.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {},
+      "styles": [
+        "forms.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "select",
+      "type": "component",
+      "description": "Instala AppSelect.",
+      "files": [
+        {
+          "source": "src/components/ui/AppSelect.vue",
+          "target": "src/components/ui/AppSelect.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {},
+      "styles": [
+        "forms.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "skeleton",
+      "type": "component",
+      "description": "Instala AppSkeleton.",
+      "files": [
+        {
+          "source": "src/components/ui/AppSkeleton.vue",
+          "target": "src/components/ui/AppSkeleton.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {},
+      "styles": [
+        "states.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "sortable",
+      "type": "component",
+      "description": "Instala AppSortable.",
+      "files": [
+        {
+          "source": "src/components/ui/AppSortable.vue",
+          "target": "src/components/ui/AppSortable.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "sortablejs": "^1.15.7"
+      },
+      "styles": [
+        "sortable.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "spinner",
+      "type": "component",
+      "description": "Instala AppSpinner.",
+      "files": [
+        {
+          "source": "src/components/ui/AppSpinner.vue",
+          "target": "src/components/ui/AppSpinner.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {},
+      "styles": [
+        "timeline-spinners.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "state",
+      "type": "component",
+      "description": "Instala AppState.",
+      "files": [
+        {
+          "source": "src/components/ui/AppState.vue",
+          "target": "src/components/ui/AppState.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "states.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "stepper",
+      "type": "component",
+      "description": "Instala AppStepper.",
+      "files": [
+        {
+          "source": "src/components/ui/AppStepper.vue",
+          "target": "src/components/ui/AppStepper.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "navigation-feedback.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "sweet-alert",
+      "type": "component",
+      "description": "Instala AppSweetAlert.",
+      "files": [
+        {
+          "source": "src/components/ui/AppSweetAlert.vue",
+          "target": "src/components/ui/AppSweetAlert.vue"
+        },
+        {
+          "source": "src/composables/useSweetAlert.ts",
+          "target": "src/composables/useSweetAlert.ts"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "sweetalert2": "^11.26.25"
+      },
+      "styles": [
+        "sweetalert.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "switch",
+      "type": "component",
+      "description": "Instala AppSwitch.",
+      "files": [
+        {
+          "source": "src/components/ui/AppSwitch.vue",
+          "target": "src/components/ui/AppSwitch.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {},
+      "styles": [
+        "forms.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "table",
+      "type": "component",
+      "description": "Instala AppTable.",
+      "files": [
+        {
+          "source": "src/components/ui/AppTable.vue",
+          "target": "src/components/ui/AppTable.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "tables.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "tabs",
+      "type": "component",
+      "description": "Instala AppTabs.",
+      "files": [
+        {
+          "source": "src/components/ui/AppTabs.vue",
+          "target": "src/components/ui/AppTabs.vue"
+        },
+        {
+          "source": "src/types/tabs.ts",
+          "target": "src/types/tabs.ts"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "tabs.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "textarea",
+      "type": "component",
+      "description": "Instala AppTextarea.",
+      "files": [
+        {
+          "source": "src/components/ui/AppTextarea.vue",
+          "target": "src/components/ui/AppTextarea.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {},
+      "styles": [
+        "forms.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "time-picker",
+      "type": "component",
+      "description": "Instala AppTimePicker.",
+      "files": [
+        {
+          "source": "src/components/ui/AppTimePicker.vue",
+          "target": "src/components/ui/AppTimePicker.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0",
+        "flatpickr": "^4.6.13"
+      },
+      "styles": [
+        "advanced-forms.css"
+      ],
+      "externalStyles": [
+        "flatpickr/dist/flatpickr.min.css"
+      ]
+    },
+    {
+      "name": "timeline",
+      "type": "component",
+      "description": "Instala AppTimeline.",
+      "files": [
+        {
+          "source": "src/components/ui/AppTimeline.vue",
+          "target": "src/components/ui/AppTimeline.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "timeline-spinners.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "toast",
+      "type": "component",
+      "description": "Instala AppToast.",
+      "files": [
+        {
+          "source": "src/components/ui/AppToast.vue",
+          "target": "src/components/ui/AppToast.vue"
+        },
+        {
+          "source": "src/types/toast.ts",
+          "target": "src/types/toast.ts"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "toasts.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "toast-viewport",
+      "type": "component",
+      "description": "Instala AppToastViewport.",
+      "files": [
+        {
+          "source": "src/components/ui/AppToastViewport.vue",
+          "target": "src/components/ui/AppToastViewport.vue"
+        },
+        {
+          "source": "src/composables/useToast.ts",
+          "target": "src/composables/useToast.ts"
+        },
+        {
+          "source": "src/types/toast.ts",
+          "target": "src/types/toast.ts"
+        }
+      ],
+      "registryDependencies": [
+        "toast"
+      ],
+      "npmDependencies": {},
+      "styles": [
+        "toasts.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "tooltip",
+      "type": "component",
+      "description": "Instala AppTooltip.",
+      "files": [
+        {
+          "source": "src/components/ui/AppTooltip.vue",
+          "target": "src/components/ui/AppTooltip.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {
+        "@lucide/vue": "^1.42.0"
+      },
+      "styles": [
+        "tooltips.css"
+      ],
+      "externalStyles": []
+    },
+    {
+      "name": "http-scene",
+      "type": "internal",
+      "description": "Instala HttpScene.",
+      "files": [
+        {
+          "source": "src/components/ui/HttpScene.vue",
+          "target": "src/components/ui/HttpScene.vue"
+        }
+      ],
+      "registryDependencies": [],
+      "npmDependencies": {},
+      "styles": [],
+      "externalStyles": []
+    },
+    {
+      "name": "forms",
+      "type": "preset",
+      "description": "Controles esenciales para formularios.",
+      "registryDependencies": [
+        "field",
+        "input",
+        "textarea",
+        "select",
+        "checkbox",
+        "radio-group",
+        "switch",
+        "input-group",
+        "button-group"
+      ],
+      "files": [],
+      "npmDependencies": {},
+      "styles": [],
+      "externalStyles": []
+    },
+    {
+      "name": "data-table",
+      "type": "preset",
+      "description": "Tabla, paginación y estados de contenido.",
+      "registryDependencies": [
+        "table",
+        "pagination",
+        "state",
+        "spinner"
+      ],
+      "files": [],
+      "npmDependencies": {},
+      "styles": [],
+      "externalStyles": []
+    },
+    {
+      "name": "feedback",
+      "type": "preset",
+      "description": "Alertas, modales, notificaciones y estados.",
+      "registryDependencies": [
+        "alert",
+        "modal",
+        "toast",
+        "toast-viewport",
+        "state"
+      ],
+      "files": [],
+      "npmDependencies": {},
+      "styles": [],
+      "externalStyles": []
+    },
+    {
+      "name": "flatpickr",
+      "type": "preset",
+      "description": "Selectores de fecha y hora con Flatpickr.",
+      "registryDependencies": [
+        "date-picker",
+        "time-picker"
+      ],
+      "files": [],
+      "npmDependencies": {},
+      "styles": [],
+      "externalStyles": []
+    }
+  ]
+}

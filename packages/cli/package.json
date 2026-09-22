@@ -1,0 +1,44 @@
+{
+  "name": "@dediho/app-ui",
+  "version": "0.1.0",
+  "description": "CLI para instalar la plantilla y los componentes de App UI en proyectos Vue.",
+  "keywords": [
+    "vue",
+    "dashboard",
+    "components",
+    "ui",
+    "cli"
+  ],
+  "author": "dediho",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/floriban/vuejs-ui.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://github.com/floriban/vuejs-ui#readme",
+  "bugs": {
+    "url": "https://github.com/floriban/vuejs-ui/issues"
+  },
+  "type": "module",
+  "bin": {
+    "app-ui": "src/index.js"
+  },
+  "files": [
+    "src",
+    "assets",
+    "README.md"
+  ],
+  "scripts": {
+    "build:assets": "node scripts/build-assets.mjs",
+    "prepack": "node scripts/build-assets.mjs",
+    "pretest": "node scripts/build-assets.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT"
+}

@@ -21,7 +21,7 @@ const properties = [
 ] as const
 </script>
 <template>
-  <DocsPageHeader eyebrow="Formularios / DatePicker" title="DatePicker" description="Selector de fecha accesible, compatible con límites y estados de formulario." />
+  <DocsPageHeader eyebrow="Integraciones / Flatpickr" title="DatePicker" description="Selector de fecha accesible, compatible con límites y estados de formulario." />
   <section class="component-section"><div class="section-heading"><div><span>01</span><h2>Uso básico</h2></div><p>Calendario uniforme con localización española.</p></div><AppCard title="Programar entrega"><div class="narrow-showcase"><AppField label="Fecha de entrega" for-id="date-basic" help="Disponible desde septiembre"><AppDatePicker id="date-basic" v-model="date" :min="min" :max="max" /></AppField><div class="docs-value-preview">Fecha seleccionada: <strong>{{ readable }}</strong></div></div></AppCard><DocsCodeBlock :code="code" /></section>
   <section class="component-section"><div class="section-heading"><div><span>02</span><h2>Prueba interactiva</h2></div><p>Ajusta límites y valor.</p></div><div class="showcase-panel form-showcase"><AppField label="Fecha" for-id="date-demo" :required="required"><AppDatePicker id="date-demo" v-model="date" :min="min" :max="max" :required="required" /></AppField><AppField label="Fecha mínima" for-id="date-min"><AppDatePicker id="date-min" v-model="min" /></AppField><AppField label="Fecha máxima" for-id="date-max"><AppDatePicker id="date-max" v-model="max" /></AppField></div></section>
   <DocsApiReference component-name="AppDatePicker" :rows="properties" note="Flatpickr se localiza en español y el modelo conserva un formato estable para enviar al servidor." />

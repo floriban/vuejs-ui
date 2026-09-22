@@ -1,14 +1,15 @@
 import { httpPages } from "./httpPages";
 import type { Component } from "vue";
 import {
+  Boxes,
   Compass,
   Database,
   FormInput,
   LayoutDashboard,
   MessagesSquare,
-  Shapes,
-  Boxes,
   PanelsTopLeft,
+  Plug,
+  Shapes,
 } from "@lucide/vue";
 
 export interface NavigationItem {
@@ -62,9 +63,6 @@ export const navigationGroups: NavigationGroup[] = [
     icon: FormInput,
     items: [
       { name: "forms", label: "Controles base" },
-      { name: "editor", label: "Editor de texto" },
-      { name: "datepicker", label: "DatePicker" },
-      { name: "timepicker", label: "TimePicker" },
       { name: "autocomplete", label: "Autocomplete" },
       { name: "input-mask", label: "Input Mask" },
       { name: "input-groups", label: "Input Group" },
@@ -79,7 +77,6 @@ export const navigationGroups: NavigationGroup[] = [
     icon: Database,
     items: [
       { name: "tables", label: "Tablas" },
-      { name: "charts", label: "Gráficos" },
       { name: "pagination", label: "Pagination" },
     ],
   },
@@ -94,6 +91,20 @@ export const navigationGroups: NavigationGroup[] = [
       { name: "accordion", label: "Accordion" },
       { name: "breadcrumbs", label: "Breadcrumbs" },
       { name: "stepper", label: "Stepper" },
+    ],
+  },
+  {
+    id: "integrations",
+    label: "Integraciones",
+    description: "Componentes respaldados por librerías especializadas.",
+    icon: Plug,
+    items: [
+      { name: "sweetalert2", label: "SweetAlert2" },
+      { name: "editor", label: "Editor de texto" },
+      { name: "sortable", label: "SortableJS" },
+      { name: "datepicker", label: "Datepicker" },
+      { name: "timepicker", label: "Timepicker" },
+      { name: "charts", label: "ECharts" },
     ],
   },
   {
@@ -121,7 +132,6 @@ export const navigationGroups: NavigationGroup[] = [
       { name: "skeleton", label: "Skeleton" },
       { name: "tooltips", label: "Tooltips" },
       { name: "popovers", label: "Popovers" },
-      { name: "sweetalert2", label: "SweetAlert2" },
     ],
   },
 ];

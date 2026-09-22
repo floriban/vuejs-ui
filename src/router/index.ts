@@ -176,6 +176,11 @@ const router = createRouter({
         },
         { path: 'select2', redirect: { name: 'advanced-select' } },
         {
+          path: 'sortable',
+          name: 'sortable',
+          component: () => import('../views/SortableView.vue'),
+        },
+        {
           path: 'sweetalert2',
           name: 'sweetalert2',
           component: () => import('../views/SweetAlertView.vue'),

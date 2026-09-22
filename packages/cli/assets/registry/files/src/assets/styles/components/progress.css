@@ -1,0 +1,180 @@
+.app-progress {
+  --progress-color: var(--color-primary);
+  --progress-soft: var(--color-primary-light);
+}
+
+.app-progress--neutral {
+  --progress-color: var(--color-gray-600);
+  --progress-soft: var(--color-light);
+}
+
+.app-progress--info {
+  --progress-color: var(--color-info);
+  --progress-soft: var(--color-info-light);
+}
+
+.app-progress--success {
+  --progress-color: var(--color-success);
+  --progress-soft: var(--color-success-light);
+}
+
+.app-progress--warning {
+  --progress-color: var(--color-warning);
+  --progress-soft: var(--color-warning-light);
+}
+
+.app-progress--danger {
+  --progress-color: var(--color-danger);
+  --progress-soft: var(--color-danger-light);
+}
+
+.app-progress--linear {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.app-progress__track {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--progress-soft);
+}
+
+.app-progress--sm .app-progress__track {
+  height: 5px;
+}
+
+.app-progress--md .app-progress__track {
+  height: 9px;
+}
+
+.app-progress--lg .app-progress__track {
+  height: 14px;
+}
+
+.app-progress__bar {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--progress-color);
+  transition: width 240ms ease;
+}
+
+.app-progress--striped .app-progress__bar {
+  background-color: var(--progress-color);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.22) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.22) 50%, rgba(255, 255, 255, 0.22) 75%, transparent 75%);
+  background-size: 18px 18px;
+}
+
+.app-progress--animated .app-progress__bar {
+  animation: app-progress-stripes 850ms linear infinite;
+}
+
+.app-progress__value {
+  min-width: 38px;
+  color: var(--color-gray-700);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: right;
+}
+
+.app-progress--indeterminate.app-progress--linear .app-progress__bar {
+  width: 38%;
+  animation: app-progress-indeterminate 1.25s ease-in-out infinite;
+}
+
+.app-progress--circular {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+}
+
+.app-progress--circular.app-progress--sm {
+  width: 48px;
+  height: 48px;
+}
+
+.app-progress--circular.app-progress--md {
+  width: 68px;
+  height: 68px;
+}
+
+.app-progress--circular.app-progress--lg {
+  width: 92px;
+  height: 92px;
+}
+
+.app-progress__circle {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.app-progress__circle-track,
+.app-progress__circle-value {
+  fill: none;
+  stroke-width: 4;
+}
+
+.app-progress__circle-track {
+  stroke: var(--progress-soft);
+}
+
+.app-progress__circle-value {
+  stroke: var(--progress-color);
+  stroke-dasharray: 100;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 240ms ease;
+}
+
+.app-progress--indeterminate .app-progress__circle {
+  animation: spin 1s linear infinite;
+}
+
+.app-progress--indeterminate .app-progress__circle-value {
+  stroke-dashoffset: 68;
+}
+
+.app-progress__circle-label {
+  position: absolute;
+  color: var(--color-gray-800);
+  font-size: 0.73rem;
+  font-weight: 600;
+}
+
+@keyframes app-progress-stripes {
+  to {
+    background-position: 18px 0;
+  }
+}
+
+@keyframes app-progress-indeterminate {
+  0% {
+    transform: translateX(-115%);
+  }
+
+  55% {
+    transform: translateX(75%);
+  }
+
+  100% {
+    transform: translateX(260%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-progress__bar,
+  .app-progress__circle-value {
+    transition-duration: 1ms;
+  }
+
+  .app-progress--animated .app-progress__bar,
+  .app-progress--indeterminate.app-progress--linear .app-progress__bar,
+  .app-progress--indeterminate .app-progress__circle {
+    animation-duration: 2.5s;
+  }
+}

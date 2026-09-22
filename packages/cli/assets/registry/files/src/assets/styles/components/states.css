@@ -1,0 +1,25 @@
+.app-state {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 18px;
+  min-height: 260px;
+  padding: 40px 28px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-gray-800);
+  text-align: center;
+}
+.app-state--compact { min-height: 160px; padding: 28px 20px; gap: 12px; }
+.app-state__icon { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; color: var(--color-muted); background: var(--color-light); }
+.app-state--compact .app-state__icon { width: 48px; height: 48px; }
+.app-state--loading .app-state__icon { color: var(--color-primary); }
+.app-state--loading .app-state__icon svg { animation: app-state-spin .9s linear infinite; }
+.app-state--error .app-state__icon { color: var(--color-danger); background: var(--color-danger-light); }
+.app-state__content { max-width: 500px; }
+.app-state__content h2 { margin: 0; color: var(--color-dark); font-size: 1.05rem; font-weight: 600; }
+.app-state__content p { margin: 7px 0 0; color: var(--color-muted); font-size: .82rem; line-height: 1.65; }
+.route-state-page { display: grid; min-height: calc(100vh - 190px); align-items: center; padding-block: 24px; }
+@keyframes app-state-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .app-state--loading .app-state__icon svg { animation: none; } }

@@ -1,11 +1,56 @@
 # App UI
 
 Catálogo de componentes reutilizables con Vue 3, TypeScript, Vite y Tailwind CSS 4.
-Las rutas actuales son `/buttons`, `/forms`, `/alerts`, `/cards`, `/tables`, `/modals`, `/toasts`, `/dropdowns`, `/tabs`, `/accordion`, `/badges`, `/avatars`, `/progress`, `/pagination`, `/tooltips` y `/popovers`.
+Incluye componentes visuales, formularios, datos, navegación, feedback, páginas HTTP e integraciones con Tiptap, Flatpickr, ECharts, SweetAlert2 y SortableJS.
+
+## Plantilla y CLI
+
+El catálogo también funciona como fuente de una plantilla instalable. El CLI está en
+`packages/cli` y el registro generado puede consultarse en `registry/index.json`.
+
+Durante el desarrollo local:
+
+```sh
+npm run registry:build
+node packages/cli/src/index.js list
+node packages/cli/src/index.js create mi-dashboard
+```
+
+Dentro de un proyecto Vue existente:
+
+```sh
+node /ruta/app-ui/packages/cli/src/index.js init
+node /ruta/app-ui/packages/cli/src/index.js add input-group
+```
+
+El paquete está disponible en [npm](https://www.npmjs.com/package/@dediho/app-ui). Puedes usarlo directamente:
+
+```sh
+npx @dediho/app-ui create mi-dashboard
+npx @dediho/app-ui init
+npx @dediho/app-ui add input-group
+npx @dediho/app-ui add sweet-alert
+npx @dediho/app-ui add sortable
+npx @dediho/app-ui add flatpickr
+npx @dediho/app-ui list
+```
+
+`create` genera un dashboard mínimo y funcional. `init` prepara un proyecto Vue
+existente sin reemplazar sus vistas. `add` resuelve dependencias entre componentes,
+instala los paquetes externos necesarios y agrega únicamente sus archivos y estilos.
+
+Antes de publicar una versión:
+
+```sh
+npm test --workspace packages/cli
+npm run cli:pack
+```
+
+El proyecto y el paquete se distribuyen con [licencia MIT](LICENSE).
 
 ## Desarrollo
 
-Node: `^22.18.0 || >=24.12.0`. El gestor declarado es `pnpm@12.3.4`;
+Node: `^22.18.0 || >=24.12.0`. El gestor declarado es `pnpm@12.5.1`;
 las versiones de dependencias se guardan en `pnpm-lock.yaml`.
 
 ```sh
@@ -47,7 +92,7 @@ Las variables locales como `--button-color` seleccionan los colores de cada vari
 
 ## Documentar un componente
 
-Las dieciséis rutas `/buttons`, `/forms`, `/alerts`, `/cards`, `/tables`, `/modals`, `/toasts`, `/dropdowns`, `/tabs`, `/accordion`, `/badges`, `/avatars`, `/progress`, `/pagination`, `/tooltips` y `/popovers` incluyen documentación de uso:
+Las páginas de componentes e integraciones incluyen documentación de uso:
 - Ejemplos visuales y código desplegable que se puede copiar.
 - Botones: demostración interactiva de carga, deshabilitado y clics.
 - Formularios: campos, selección, validación, mensajes asociados y envío.
@@ -76,7 +121,7 @@ Los fragmentos cortos presuponen que el componente correspondiente está importa
 - CSS organizado y colores centralizados.
 - AppButton, AppAlert, AppCard, AppTable, AppModal, Toast, Dropdown, Tabs, Accordion, Badge, Avatar, Progress, Pagination, Tooltip, Popover y los controles de formulario están documentados con ejemplos copiables, API y pruebas interactivas.
 - Git iniciado con una versión anterior a la reorganización.
-- Las dieciséis páginas del catálogo incluyen documentación y demostraciones interactivas.
+- Las páginas del catálogo incluyen documentación y demostraciones interactivas.
 - Los controles de acciones del header son visuales, sin operaciones conectadas.
 
 Próxima etapa: construir una pantalla funcional que combine los componentes.

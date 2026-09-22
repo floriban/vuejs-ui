@@ -1,0 +1,100 @@
+.app-sortable {
+  display: grid;
+  gap: 10px;
+}
+
+.app-sortable__item {
+  min-width: 0;
+  border-radius: var(--radius-sm);
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+.app-sortable__item--ghost {
+  opacity: .35;
+  background: var(--color-primary-light);
+}
+
+.app-sortable__item--chosen {
+  box-shadow: 0 0 0 2px var(--color-focus-ring);
+}
+
+.app-sortable__item--dragging {
+  opacity: .9;
+  transform: rotate(.4deg);
+}
+
+.docs-sortable-demo {
+  display: grid;
+  gap: 18px;
+}
+
+.docs-sortable-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.docs-sortable-row {
+  display: grid;
+  grid-template-columns: auto 28px minmax(0, 1fr) auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-white);
+}
+
+.docs-sortable-handle {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--color-light);
+  color: var(--color-muted);
+  cursor: grab;
+}
+
+.docs-sortable-handle:active { cursor: grabbing; }
+.docs-sortable-handle:disabled { cursor: not-allowed; opacity: .45; }
+
+.docs-sortable-position {
+  color: var(--color-primary);
+  font-size: .72rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.docs-sortable-content strong {
+  display: block;
+  color: var(--color-dark);
+  font-size: .86rem;
+  font-weight: 600;
+}
+
+.docs-sortable-content p {
+  margin: 3px 0 0;
+  color: var(--color-muted);
+  font-size: .75rem;
+  line-height: 1.5;
+}
+
+.docs-sortable-actions {
+  display: flex;
+  gap: 2px;
+}
+
+@media (max-width: 700px) {
+  .docs-sortable-row {
+    grid-template-columns: auto 24px minmax(0, 1fr) auto;
+  }
+
+  .docs-sortable-row > .app-badge { display: none; }
+  .docs-sortable-actions { grid-column: 3 / -1; }
+}

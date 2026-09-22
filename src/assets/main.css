@@ -23,6 +23,7 @@
 @import "./styles/components/timeline-spinners.css";
 @import "./styles/components/advanced-forms.css";
 @import "./styles/components/sweetalert.css";
+@import "./styles/components/sortable.css";
 @import "./styles/components/navigation-feedback.css";
 @import "./styles/components/file-upload.css";
 @import "./styles/docs.css";

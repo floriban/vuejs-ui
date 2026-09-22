@@ -18,7 +18,7 @@ const rows = [['option', 'EChartsOption', '—', 'Configuración ECharts. Se reg
 const code = '<AppChart :option="chartOptions" label="Ventas por día" :height="320" />'
 </script>
 <template>
-  <DocsPageHeader eyebrow="Datos / Gráficos" title="Gráficos" description="Visualizaciones interactivas con Apache ECharts. Los ejemplos usan datos de muestra y se adaptan al tema del dashboard." />
+  <DocsPageHeader eyebrow="Integraciones / Apache ECharts" title="Gráficos" description="Visualizaciones interactivas con Apache ECharts. Los ejemplos usan datos de muestra y se adaptan al tema del dashboard." />
   <section class="component-section">
     <div class="section-heading"><div><span>01</span><h2>Ventas e ingresos</h2></div><label>Período <select v-model="period" class="app-control"><option value="week">Esta semana</option><option value="year">Por mes</option></select></label></div>
     <div class="charts-grid"><AppCard title="Ventas por período"><AppChart :option="bar" label="Ventas en soles por período" /></AppCard><AppCard title="Evolución de ingresos"><AppChart :option="line" label="Evolución de ingresos en soles" /></AppCard></div>

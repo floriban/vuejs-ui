@@ -1,0 +1,115 @@
+.app-popover__panel {
+  position: fixed;
+  z-index: 1250;
+  visibility: hidden;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-dropdown);
+}
+
+.app-popover__panel--positioned {
+  visibility: visible;
+}
+
+.app-popover__panel--sm {
+  width: min(260px, calc(100vw - 16px));
+}
+
+.app-popover__panel--md {
+  width: min(340px, calc(100vw - 16px));
+}
+
+.app-popover__panel--lg {
+  width: min(440px, calc(100vw - 16px));
+}
+
+.app-popover__header {
+  display: flex;
+  min-height: 62px;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.app-popover__header h3 {
+  margin: 0;
+  color: var(--color-dark);
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.app-popover__header p {
+  margin: 3px 0 0;
+  color: var(--color-muted);
+  font-size: 0.71rem;
+  line-height: 1.45;
+}
+
+.app-popover__close {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  flex: none;
+  margin: -3px -4px 0 0;
+  padding: 0;
+  cursor: pointer;
+  place-items: center;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-gray-500);
+}
+
+.app-popover__close:hover {
+  background: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+.app-popover__body {
+  padding: 16px;
+  color: var(--color-gray-700);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.app-popover__body > :first-child {
+  margin-top: 0;
+}
+
+.app-popover__body > :last-child {
+  margin-bottom: 0;
+}
+
+.app-popover__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--color-border);
+}
+
+.app-popover-panel-enter-active,
+.app-popover-panel-leave-active {
+  transition:
+    opacity 140ms ease,
+    transform 140ms ease;
+}
+
+.app-popover-panel-enter-from,
+.app-popover-panel-leave-to {
+  opacity: 0;
+  transform: translateY(-5px) scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-popover-panel-enter-active,
+  .app-popover-panel-leave-active {
+    transition-duration: 1ms;
+  }
+}

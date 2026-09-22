@@ -1,0 +1,10 @@
+{
+  "version": "0.1.0",
+  "typescript": true,
+  "paths": {
+    "components": "src/components/ui",
+    "composables": "src/composables",
+    "styles": "src/assets/styles/components"
+  },
+  "installed": {}
+}

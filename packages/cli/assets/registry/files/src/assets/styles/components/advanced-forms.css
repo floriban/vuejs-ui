@@ -1,0 +1,63 @@
+.app-input-affix { position: relative; display: block; }
+.app-input-affix > svg { position: absolute; z-index: 1; top: 50%; left: 12px; color: var(--color-gray-500); pointer-events: none; transform: translateY(-50%); }
+.app-control--with-icon { padding-left: 40px; }
+.app-control[type="date"], .app-control[type="time"] { color-scheme: light; }
+.app-control[type="date"]::-webkit-calendar-picker-indicator, .app-control[type="time"]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: .55; }
+.docs-value-preview { display: flex; gap: 9px; align-items: center; min-height: 42px; padding: 9px 12px; border-radius: var(--radius-sm); color: var(--color-gray-700); background: var(--color-light); font-size: .82rem; }
+.docs-value-preview strong { color: var(--color-dark); font-weight: 600; }
+.app-autocomplete, .app-advanced-select { position: relative; }
+.app-autocomplete__control { position: relative; }
+.app-autocomplete__control > svg { position: absolute; z-index: 1; top: 50%; left: 12px; color: var(--color-gray-500); transform: translateY(-50%); }
+.app-autocomplete__control .app-control { padding-right: 38px; padding-left: 39px; }
+.app-autocomplete__control > button { position: absolute; top: 50%; right: 9px; display: grid; place-items: center; width: 26px; height: 26px; padding: 0; border: 0; border-radius: 50%; color: var(--color-gray-500); background: transparent; cursor: pointer; transform: translateY(-50%); }
+.app-autocomplete__control > button:hover { color: var(--color-dark); background: var(--color-light); }
+.app-option-menu { z-index: 30; margin: 6px 0 0; padding: 6px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-white); box-shadow: var(--shadow-dropdown); list-style: none; }
+.app-floating-menu { z-index: 1100; margin: 0; overflow: auto; }
+.app-option-menu li:not(.app-option-menu__empty) { display: flex; justify-content: space-between; gap: 16px; align-items: center; padding: 9px 10px; border-radius: .32rem; color: var(--color-gray-800); cursor: pointer; }
+.app-option-menu li:not(.app-option-menu__empty):hover, .app-option-menu li.is-active, .app-option-menu li.is-selected { color: var(--color-primary); background: var(--color-primary-light); }
+.app-option-menu li.is-disabled { cursor: not-allowed; opacity: .5; }
+.app-option-menu strong { display: block; font-size: .82rem; font-weight: 500; }
+.app-option-menu small { display: block; margin-top: 2px; color: var(--color-muted); font-size: .7rem; }
+.app-option-menu__empty { padding: 13px 10px; color: var(--color-muted); font-size: .78rem; text-align: center; }
+.app-advanced-select__trigger { display: flex; justify-content: space-between; gap: 10px; align-items: center; text-align: left; cursor: pointer; }
+.app-advanced-select__placeholder { color: var(--color-gray-500); }
+.app-advanced-select__value { overflow: hidden; color: var(--color-gray-800); text-overflow: ellipsis; white-space: nowrap; }
+.app-advanced-select__actions { display: inline-flex; gap: 5px; align-items: center; margin-left: auto; color: var(--color-gray-500); }
+.app-advanced-select.is-open .app-advanced-select__trigger { border-color: var(--color-control-focus); }
+.app-advanced-select.is-open .app-advanced-select__actions > svg { transform: rotate(180deg); }
+.app-advanced-select__menu { z-index: 1100; margin: 0; padding: 7px; overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-white); box-shadow: var(--shadow-dropdown); }
+.app-advanced-select__search { display: flex; gap: 8px; align-items: center; padding: 7px 9px; border: 1px solid var(--color-gray-300); border-radius: .32rem; color: var(--color-gray-500); }
+.app-advanced-select__search input { min-width: 0; width: 100%; padding: 0; border: 0; outline: 0; color: var(--color-gray-800); background: transparent; font: inherit; font-size: .78rem; }
+.app-advanced-select__options { max-height: 230px; margin-top: 6px; overflow: auto; border: 0; box-shadow: none; }
+.app-advanced-select__tags { display: flex; gap: 5px; align-items: center; min-width: 0; overflow: hidden; }
+.app-advanced-select__tag { display: inline-flex; gap: 4px; align-items: center; max-width: 150px; padding: 3px 7px; border-radius: 999px; color: var(--color-primary); background: var(--color-primary-light); font-size: .7rem; white-space: nowrap; }
+.app-advanced-select__options li.is-active:not(.is-disabled) { background: var(--color-gray-100); }
+.app-advanced-select__count { color: var(--color-muted); font-size: .72rem; }
+.docs-form-component-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 700px) { .docs-form-component-grid { grid-template-columns: 1fr; } }
+.app-floating-menu--top { transform-origin: bottom center; }
+.app-floating-menu--bottom { transform-origin: top center; }
+.app-flatpickr > .app-control { width: 100%; }
+.flatpickr-calendar { z-index: 1200; border: 1px solid var(--color-border); border-radius: var(--radius-md); font-family: var(--font-sans); box-shadow: var(--shadow-dropdown); }
+.flatpickr-calendar.arrowTop::before { border-bottom-color: var(--color-border); }
+.flatpickr-months .flatpickr-month, .flatpickr-current-month .flatpickr-monthDropdown-months { color: var(--color-dark); fill: var(--color-dark); }
+.flatpickr-current-month input.cur-year, .flatpickr-current-month .flatpickr-monthDropdown-months { font-weight: 500; }
+span.flatpickr-weekday { color: var(--color-muted); font-weight: 600; }
+.flatpickr-day { color: var(--color-gray-700); border-radius: var(--radius-sm); }
+.flatpickr-day:hover, .flatpickr-day:focus { border-color: var(--color-primary-light); background: var(--color-primary-light); }
+.flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange, .flatpickr-day.selected:hover, .flatpickr-day.startRange:hover, .flatpickr-day.endRange:hover { border-color: var(--color-primary); background: var(--color-primary); }
+.flatpickr-day.today { border-color: var(--color-primary); color: var(--color-primary); }
+.flatpickr-time input:hover, .flatpickr-time .flatpickr-am-pm:hover, .flatpickr-time input:focus { background: var(--color-light); }
+.app-advanced-select__trigger {
+  position: relative;
+  padding-right: 40px;
+}
+.app-advanced-select.has-clear .app-advanced-select__trigger { padding-right: 66px; }
+.app-advanced-select__actions { position: absolute; top: 50%; right: 12px; margin: 0; transform: translateY(-50%); }
+.app-advanced-select__clear { position: absolute; z-index: 2; top: 50%; right: 36px; display: grid; place-items: center; width: 24px; height: 24px; padding: 0; border: 0; border-radius: 50%; color: var(--color-gray-500); background: transparent; cursor: pointer; transform: translateY(-50%); }
+.app-advanced-select__clear:hover { color: var(--color-danger); background: var(--color-danger-light); }
+.app-advanced-select__clear:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 1px; }
+.app-advanced-select__clear:disabled { cursor: not-allowed; opacity: .5; }
+.app-advanced-select--compact .app-advanced-select__tags { flex-wrap: nowrap; }
+.app-advanced-select--expanded .app-advanced-select__trigger { height: auto; min-height: 42px; padding-block: 7px; }
+.app-advanced-select--expanded .app-advanced-select__tags { flex-wrap: wrap; overflow: visible; }

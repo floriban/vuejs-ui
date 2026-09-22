@@ -11,7 +11,7 @@ const rows = [['v-model', 'string', '—', 'Contenido HTML sincronizado en ambas
 const code = '<AppEditor v-model="content" label="Descripción del producto" placeholder="Describe tu producto…" />'
 </script>
 <template>
-  <DocsPageHeader eyebrow="Formularios / Editor" title="Editor de texto" description="Tiptap con barra de herramientas de estilo clásico, iconos Lucide y controles en español." />
+  <DocsPageHeader eyebrow="Integraciones / Tiptap" title="Editor de texto" description="Tiptap con barra de herramientas de estilo clásico, iconos Lucide y controles en español." />
   <section class="component-section"><div class="section-heading"><div><span>01</span><h2>Edición visual</h2></div><div class="editor-demo-actions"><label><input v-model="disabled" type="checkbox" /> Solo lectura</label><button type="button" class="dashboard-action" @click="content = initial">Restablecer ejemplo</button></div></div><AppEditor v-model="content" :disabled="disabled" label="Contenido de ejemplo" /></section>
   <section class="component-section"><div class="section-heading"><div><span>02</span><h2>Contenido HTML</h2></div><p>El modelo se actualiza mientras escribes.</p></div><DocsCodeBlock :code="content" /></section>
   <DocsCodeBlock :code="code" /><DocsApiReference component-name="AppEditor" :rows="rows" note="Los enlaces aceptan http, https y mailto. Al guardar y mostrar HTML fuera del editor, sanitízalo en el servidor según las reglas de tu aplicación." />

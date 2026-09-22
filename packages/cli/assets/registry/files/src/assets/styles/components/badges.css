@@ -1,0 +1,117 @@
+.app-badge {
+  --badge-color: var(--color-primary);
+  --badge-soft: var(--color-primary-light);
+
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-weight: 600;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.app-badge--neutral {
+  --badge-color: var(--color-gray-700);
+  --badge-soft: var(--color-light);
+}
+
+.app-badge--info {
+  --badge-color: var(--color-info);
+  --badge-soft: var(--color-info-light);
+}
+
+.app-badge--success {
+  --badge-color: var(--color-success);
+  --badge-soft: var(--color-success-light);
+}
+
+.app-badge--warning {
+  --badge-color: var(--color-warning);
+  --badge-soft: var(--color-warning-light);
+}
+
+.app-badge--danger {
+  --badge-color: var(--color-danger);
+  --badge-soft: var(--color-danger-light);
+}
+
+.app-badge--soft {
+  background: var(--badge-soft);
+  color: var(--badge-color);
+}
+
+.app-badge--solid {
+  border-color: var(--badge-color);
+  background: var(--badge-color);
+  color: #ffffff;
+}
+
+.app-badge--outline {
+  border-color: var(--badge-color);
+  background: transparent;
+  color: var(--badge-color);
+}
+
+.app-badge--sm {
+  min-height: 20px;
+  padding: 3px 7px;
+  font-size: 0.62rem;
+}
+
+.app-badge--md {
+  min-height: 24px;
+  padding: 4px 9px;
+  font-size: 0.7rem;
+}
+
+.app-badge--lg {
+  min-height: 29px;
+  padding: 5px 11px;
+  font-size: 0.77rem;
+}
+
+.app-badge--rounded {
+  border-radius: 999px;
+}
+
+.app-badge__dot {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.app-badge__icon {
+  flex: none;
+}
+
+.app-badge__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-badge__close {
+  display: grid;
+  width: 16px;
+  height: 16px;
+  margin-right: -3px;
+  padding: 0;
+  cursor: pointer;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: currentColor;
+  opacity: 0.7;
+}
+
+.app-badge__close:hover {
+  background: color-mix(in srgb, currentColor 14%, transparent);
+  opacity: 1;
+}

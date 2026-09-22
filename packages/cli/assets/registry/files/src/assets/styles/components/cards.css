@@ -1,0 +1,102 @@
+.app-card {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.app-card--outline {
+  border: 1px solid var(--color-border);
+}
+
+.app-card--elevated {
+  border: 0;
+  box-shadow: var(--shadow-card);
+}
+
+.app-card__header,
+.app-card__footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 20px 22px;
+}
+
+.app-card__header {
+  min-height: 70px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.app-card__footer {
+  border-top: 1px solid var(--color-border);
+}
+
+.app-card__body {
+  padding: 22px;
+  color: var(--color-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.app-card__body p {
+  margin: 0;
+}
+
+.app-card h3 {
+  margin: 3px 0 0;
+  color: var(--color-dark);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Automatic header: icon, labels and optional toolbar. Custom header slots stay intact. */
+.app-card__heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
+}
+.app-card__labels {
+  min-width: 0;
+}
+.app-card .app-card__title {
+  margin: 0;
+  overflow-wrap: anywhere;
+  line-height: 1.45;
+}
+.app-card__subtitle {
+  margin: 4px 0 0;
+  color: var(--color-gray-500);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.app-card__icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+.app-card__icon--primary { color: var(--color-primary); }
+.app-card__icon--neutral { color: var(--color-muted); }
+.app-card__icon--success { color: var(--color-success); }
+.app-card__icon--info { color: var(--color-info); }
+.app-card__icon--warning { color: var(--color-warning); }
+.app-card__icon--danger { color: var(--color-danger); }
+.app-card__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-left: auto;
+}
+@media (max-width: 600px) {
+  .app-card__header:has(.app-card__heading) {
+    flex-wrap: wrap;
+  }
+  .app-card__heading {
+    flex-basis: 180px;
+  }
+}
