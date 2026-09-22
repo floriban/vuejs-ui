@@ -4,6 +4,8 @@ import { LayoutDashboard, Menu, Moon, PackagePlus, Sun, X } from '@lucide/vue'
 import { useRoute } from 'vue-router'
 import { useTheme } from '../composables/useTheme'
 
+const logoUrl = `${import.meta.env.BASE_URL}logo.png`
+
 const route = useRoute()
 const mobileOpen = ref(false)
 const title = computed(() => String(route.meta.title ?? 'Dashboard'))
@@ -15,7 +17,7 @@ watch(() => route.fullPath, () => { mobileOpen.value = false })
   <div class="app-shell">
     <button v-if="mobileOpen" class="app-shell__backdrop" aria-label="Cerrar navegación" @click="mobileOpen = false"></button>
     <aside class="app-shell__sidebar" :class="{ 'is-open': mobileOpen }">
-      <RouterLink class="app-shell__brand" :to="{ name: 'dashboard' }"><span>A</span><strong>App UI</strong></RouterLink>
+      <RouterLink class="app-shell__brand" :to="{ name: 'dashboard' }"><span><img :src="logoUrl" alt="" width="35" height="35" /></span><strong>App UI</strong></RouterLink>
       <button class="app-shell__close" type="button" aria-label="Cerrar menú" @click="mobileOpen = false"><X :size="20" /></button>
       <nav aria-label="Navegación principal">
         <RouterLink :to="{ name: 'dashboard' }"><LayoutDashboard :size="19" /><span>Dashboard</span></RouterLink>
@@ -37,7 +39,8 @@ watch(() => route.fullPath, () => { mobileOpen.value = false })
 .app-shell { display: grid; grid-template-columns: 250px minmax(0, 1fr); min-height: 100vh; }
 .app-shell__sidebar { position: sticky; top: 0; display: flex; flex-direction: column; height: 100vh; padding: 24px 17px; background: #1e1e2d; color: #a2a3b7; }
 .app-shell__brand { display: flex; align-items: center; gap: 12px; padding: 0 9px 24px; color: white; text-decoration: none; }
-.app-shell__brand > span { display: grid; place-items: center; width: 35px; height: 35px; border-radius: 9px; background: var(--color-primary); font-weight: 600; }
+.app-shell__brand > span { display: grid; place-items: center; width: 35px; height: 35px; border-radius: 9px; overflow: hidden; flex-shrink: 0; }
+.app-shell__brand img { display: block; width: 100%; height: 100%; object-fit: contain; transform: scale(1.65); }
 .app-shell__brand strong { font-size: .95rem; font-weight: 600; }
 .app-shell__sidebar nav { display: grid; gap: 5px; }
 .app-shell__sidebar nav a { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 7px; color: #a2a3b7; font-size: .82rem; text-decoration: none; }

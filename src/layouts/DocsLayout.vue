@@ -8,6 +8,8 @@ import AppDrawer from '../components/ui/AppDrawer.vue'
 import AppState from '../components/ui/AppState.vue'
 import { dashboardItem, findNavigationItem, navigationGroups } from '../config/navigation'
 
+const logoUrl = `${import.meta.env.BASE_URL}logo.png`
+
 const route = useRoute()
 const renderError = ref(false)
 onErrorCaptured(() => { renderError.value = true; return false })
@@ -39,7 +41,7 @@ function handleMobileNavigation(event: MouseEvent) {
     <aside class="docs-sidebar">
       <div class="sidebar-header">
         <RouterLink class="brand" :to="{ name: dashboardItem.name }" aria-label="App UI, Dashboard">
-          <span class="brand__mark shrink-0 select-none">A</span>
+          <span class="brand__mark shrink-0 select-none"><img :src="logoUrl" alt="" width="38" height="38" /></span>
           <span class="brand__text"><strong>App UI</strong><small>Componentes Vue</small></span>
         </RouterLink>
         <button class="sidebar-toggle" type="button" :aria-label="collapsed ? 'Fijar menú expandido' : 'Plegar menú'"

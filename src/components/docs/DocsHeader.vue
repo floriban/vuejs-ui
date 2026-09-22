@@ -5,6 +5,8 @@ import { onMounted, onBeforeUnmount, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useTheme } from '../../composables/useTheme'
 
+const logoUrl = `${import.meta.env.BASE_URL}logo.png`
+
 const { theme, toggleTheme } = useTheme()
 
 defineProps<{ title: string; mobileMenuOpen?: boolean }>()
@@ -41,7 +43,7 @@ onBeforeUnmount(() => {
 <template>
   <header ref="headerElement" class="dashboard-header" :class="{ 'dashboard-header--navigation-open': mobilePanel === 'navigation', 'dashboard-header--tools-open': mobilePanel === 'tools' }">
     <div class="dashboard-mobile-bar">
-      <RouterLink :to="{ name: 'dashboard' }" class="dashboard-mobile-brand" aria-label="App UI, Dashboard"><span class="brand__mark">A</span><strong>App UI</strong></RouterLink>
+      <RouterLink :to="{ name: 'dashboard' }" class="dashboard-mobile-brand" aria-label="App UI, Dashboard"><span class="brand__mark"><img :src="logoUrl" alt="" width="38" height="38" /></span><strong>App UI</strong></RouterLink>
       <div class="dashboard-mobile-controls">
         <button type="button" aria-label="Abrir menú principal" title="Menú principal" aria-controls="mobile-navigation-panel" :aria-expanded="Boolean(mobileMenuOpen)" @click="mobilePanel = null; emit('open-menu')"><PanelLeft :size="23" /></button>
         <button ref="navigationToggle" type="button" aria-label="Navegación superior" title="Navegación superior" aria-controls="dashboard-shortcuts" :aria-expanded="mobilePanel === 'navigation'" @click="togglePanel('navigation')"><X v-if="mobilePanel === 'navigation'" :size="23" /><Menu v-else :size="23" /></button>
