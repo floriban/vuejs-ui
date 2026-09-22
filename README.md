@@ -1,5 +1,7 @@
 # App UI
 
+[Ver demo en vivo](https://lingering-boat-6e61.floriban.workers.dev/dashboard)
+
 Catálogo de componentes reutilizables con Vue 3, TypeScript, Vite y Tailwind CSS 4.
 Incluye componentes visuales, formularios, datos, navegación, feedback, páginas HTTP e integraciones con Tiptap, Flatpickr, ECharts, SweetAlert2 y SortableJS.
 
